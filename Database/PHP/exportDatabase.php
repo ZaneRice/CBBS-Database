@@ -1,12 +1,15 @@
 <?php
 /*
- * This script will write all of the data in the tables listed in the
- * $tableNames array to a file named $filename using the database
- * connected to by $database 
+ * Craetes a file named databaseTables.csv which can be read
+ * in by Excel.
+ *
+ * The file is formatted to be human-readable and will contain the
+ * data from all tables listed in $tableNames
  */
 require 'excelFunctions.php';
 
-$database = mysqli_connect("","","","");
+//$database = mysqli_connect("","","","");
+$database = mysqli_connect("oss-ci.cs.clemson.edu","cpsc472","myDB4dmin","cpsc472");
 
 /* 
  * The names of the tables which need to be written in an Excel
@@ -15,7 +18,7 @@ $database = mysqli_connect("","","","");
 $tableNames = array("Mentor", "Mentee");
 
 /*
- * The name of the fiel which will contain the table data in an Excel
+ * The name of the file which will contain the table data in an Excel
  * readable format
  */
 $fileName = "databaseTables.csv";
