@@ -1,6 +1,3 @@
 "Mentor"
-"Email" ,"First","Middle","Last" ,"Work Phone","Work Phone Ext." ,"Mobile Phone","Street Address","City" ,"State","Country","Zip","IsMentor","IsMentee","IsAdmin" ,"IsSponsor" ,"Years In Current Position" ,"Years In Company" ,"Company Name" ,"Position" ,"ShowInMatchResult" ,"Title" ,"Background"
-
-"Mentee"
-"Email", "University", "Graduation Year", "Major", "First", "Middle", "Last", "Mobile Phone", "Street Address", "City", "State", "Country", "Zip", "IsMentor", "IsMentee", "IsAdmin", "ShowInMatchResult", "Background"
-
+"Email","FirstName","MiddleName","LastName","WorkPhone","WorkTelephoneExtention","MobilePhone","StreetAddress","City","State","Country","ZipCode","IsMentor","IsMentee","IsAdmin","IsSponsor","YearsInCurrentPosition","YearsInCompany","CompanyName","Position","ShowInMatchResult","Title","Background"
+"steve@clemson.edu","Dennis","Elliott","Stevenson","8646565880","","8646565880"," "," "," "," "," ","0","0","0","0","30","32"," "," ","0","Associate;Professor","Art"
