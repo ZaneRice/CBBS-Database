@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 07, 2013 at 09:35 PM
+-- Generation Time: Mar 07, 2013 at 11:44 PM
 -- Server version: 5.5.29
 -- PHP Version: 5.3.10-1ubuntu3.5
 
@@ -686,7 +686,7 @@ CREATE TABLE IF NOT EXISTS `Mentee` (
   `IsMentor` tinyint(1) NOT NULL,
   `IsMentee` tinyint(1) NOT NULL,
   `IsAdmin` tinyint(1) NOT NULL,
-  `ShowInMatchResult` tinyint(1) NOT NULL,
+  `IsInMatchResult` tinyint(1) NOT NULL,
   `Background` varchar(20) NOT NULL,
   PRIMARY KEY (`Email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -695,9 +695,8 @@ CREATE TABLE IF NOT EXISTS `Mentee` (
 -- Dumping data for table `Mentee`
 --
 
-INSERT INTO `Mentee` (`Email`, `University`, `GraduationYear`, `Major`, `FirstName`, `MiddleName`, `LastName`, `MobilePhone`, `StreetAddress`, `City`, `State`, `Country`, `ZipCode`, `IsMentor`, `IsMentee`, `IsAdmin`, `ShowInMatchResult`, `Background`) VALUES
-('rkadiya@clemson.edu', '', '', '', 'Ravi', 'Teja', 'kadiyam', '9876543210', '220 Elm St', 'Clemson', 'South Carolina', '29631', 'FALSE', 0, 0, 0, 0, 'Engineering'),
-('steve@clemson.edu', '', '', '', 'Dennis', 'Elliott', 'Stevenson', '8646565880', '123 Evergreen Drive', 'Clemson', 'South Carolina', '29631', 'TRUE', 0, 0, 0, 0, 'Art');
+INSERT INTO `Mentee` (`Email`, `University`, `GraduationYear`, `Major`, `FirstName`, `MiddleName`, `LastName`, `MobilePhone`, `StreetAddress`, `City`, `State`, `Country`, `ZipCode`, `IsMentor`, `IsMentee`, `IsAdmin`, `IsInMatchResult`, `Background`) VALUES
+('exampleMentee@clemson.edu', ' ', ' ', ' ', 'FirstExample', 'MiddleExample', 'LastExample', '5555555555', ' ', ' ', ' ', ' ', ' ', 0, 1, 0, 1, 'Example Background');
 
 -- --------------------------------------------------------
 
@@ -740,7 +739,7 @@ CREATE TABLE IF NOT EXISTS `Mentor` (
   `YearsInCompany` int(10) NOT NULL,
   `CompanyName` varchar(40) NOT NULL,
   `Position` varchar(40) NOT NULL,
-  `ShowInMatchResult` tinyint(1) NOT NULL,
+  `IsInMatchResult` tinyint(1) NOT NULL,
   `Title` varchar(40) NOT NULL,
   `Background` varchar(20) NOT NULL,
   PRIMARY KEY (`Email`)
@@ -750,8 +749,8 @@ CREATE TABLE IF NOT EXISTS `Mentor` (
 -- Dumping data for table `Mentor`
 --
 
-INSERT INTO `Mentor` (`Email`, `FirstName`, `MiddleName`, `LastName`, `WorkPhone`, `WorkTelephoneExtention`, `MobilePhone`, `StreetAddress`, `City`, `State`, `Country`, `ZipCode`, `IsMentor`, `IsMentee`, `IsAdmin`, `IsSponsor`, `YearsInCurrentPosition`, `YearsInCompany`, `CompanyName`, `Position`, `ShowInMatchResult`, `Title`, `Background`) VALUES
-('steve@clemson.edu', 'Dennis', 'Elliott', 'Stevenson', '8646565880', '', '8646565880', ' ', ' ', ' ', ' ', ' ', 0, 0, 0, 0, 30, 32, ' ', ' ', 0, 'Associate;Professor', 'Art');
+INSERT INTO `Mentor` (`Email`, `FirstName`, `MiddleName`, `LastName`, `WorkPhone`, `WorkTelephoneExtention`, `MobilePhone`, `StreetAddress`, `City`, `State`, `Country`, `ZipCode`, `IsMentor`, `IsMentee`, `IsAdmin`, `IsSponsor`, `YearsInCurrentPosition`, `YearsInCompany`, `CompanyName`, `Position`, `IsInMatchResult`, `Title`, `Background`) VALUES
+('steve@clemson.edu', 'Dennis', 'Elliott', 'Stevenson', '8646565880', '', '8646565880', ' ', ' ', ' ', ' ', ' ', 1, 0, 0, 0, 30, 32, ' ', ' ', 1, 'Associate Professor', 'Art');
 
 -- --------------------------------------------------------
 
