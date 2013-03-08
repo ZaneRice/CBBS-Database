@@ -1,8 +1,0 @@
-"Mentee"
-"Email", "University", "Graduation Year", "Major", "First", "Middle", "Last", "Mobile Phone", "Street Address", "City", "State", "Country", "Zip", "IsMentor", "IsMentee", "IsAdmin", "ShowInMatchResult", "Background"
-"rkadiya@clemson.edu",,,,"Ravi","Teja","kadiyam","9876543210","220 Elm St","Clemson","South Carolina","29631","FALSE","0","0","0","0","Engineering"
-"steve@clemson.edu",,,,"Dennis","Elliott","Stevenson","8646565880","123 Evergreen Drive","Clemson","South Carolina","29631","TRUE","0","0","0","0","Art"
-
-"Mentor"
-"Email" ,"First","Middle","Last" ,"Work Phone","Work Phone Ext." ,"Mobile Phone","Street Address","City" ,"State","Country","Zip","IsMentor","IsMentee","IsAdmin" ,"IsSponsor" ,"Years In Current Position" ,"Years In Company" ,"Company Name" ,"Position" ,"ShowInMatchResult" ,"Title" ,"Background"
-"steve@clemson.edu","Dennis","Elliott","Stevenson","8646565880",,"8646565880"," "," "," "," "," ","0","0","0","0","30","32"," "," ","0","Associate;Professor","Art"
