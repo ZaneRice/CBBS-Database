@@ -1,5 +1,20 @@
-import sys
+#!/usr/bin/python
+#
+# This python script converts the old database's single table into
+# two tables usable in the new database.
+#
+# The script expects input from stdin and outputs the data into two
+# files : Mentor.csv and Mentee.csv which represent the Mentor and Mentee
+# tables in the new database.
+#
+# The input must be a .csv file. The easiest way to obtain this file is to
+# use the 'save as' functionality in Excel to resave the old database's data.
+#
+# The Mentor.csv and Mentee.csv files can be loaded into the new database
+# using the phpMyAdmin 'import' facility
+#
 
+import sys
 
 def addToMentorTable(oldarr, mentorfile):
 	newarr = []
@@ -15,15 +30,28 @@ def addToMentorTable(oldarr, mentorfile):
 	newarr.append(" ")         #State
 	newarr.append(" ")         #Country
 	newarr.append(" ")         #Zip
-	newarr.append(oldarr[11])  #IsMentor
-	newarr.append(oldarr[12])  #IsMentee
-	newarr.append("FALSE")     #IsAdmin
-	newarr.append(oldarr[14])  #IsSponsor
+	newarr.append("1")         #IsMentor
+
+	if oldarr[12] == "TRUE":
+		newarr.append("1") #IsMentee
+	else:
+	    	newarr.append("0") #IsMentee
+
+	newarr.append("0")         #IsAdmin
+	if oldarr[14] == "TRUE":
+		newarr.append("1") #IsSponsor
+	else:
+	    	newarr.append("0") #IsSponsor
 	newarr.append(oldarr[15])  #Years In Current Position
 	newarr.append(oldarr[16])  #Years In Company
 	newarr.append(" ")         #Company Name
 	newarr.append(" ")         #Position
-	newarr.append(oldarr[17])  #ShowInMatchResult
+	
+	if oldarr[17] == "TRUE":
+		newarr.append("1") #ShowInMatchResult
+	else:
+	    	newarr.append("0") #ShowInMatchResult
+
 	newarr.append(oldarr[18])  #Title
 	newarr.append(oldarr[20])  #Background
 
@@ -32,7 +60,7 @@ def addToMentorTable(oldarr, mentorfile):
 	mentorfile.write('\n')
 
 
-def addToMenteeTable(linearr, menteefile):
+def addToMenteeTable(oldarr, menteefile):
 	#newarr = [" "] * 
 	newarr = []
 	newarr.append(oldarr[0])   #Email
@@ -48,37 +76,40 @@ def addToMenteeTable(linearr, menteefile):
 	newarr.append(" ")         #State
 	newarr.append(" ")         #Country
 	newarr.append(" ")         #Zip
-	newarr.append(oldarr[11])  #IsMentor
-	newarr.append(oldarr[12])  #IsMentee
-	newarr.append("FALSE")     #IsAdmin
-	newarr.append(oldarr[17])  #ShowInMatchResult
+	
+	if oldarr[11] == "TRUE":
+		newarr.append("1") #IsMentor
+	else:
+	    	newarr.append("0") #IsMentor
+	
+	newarr.append("1")         #IsMentee
+	newarr.append("0")         #IsAdmin
+	
+	if oldarr[17] == "TRUE":
+		newarr.append("1") #ShowInMatchResult
+	else:
+	    	newarr.append("0") #ShowInMatchResult
 	newarr.append(oldarr[20])  #Background
 
 	lineout = ','.join(newarr)
 	menteefile.write(lineout)
 	menteefile.write('\n')
 
-
 mentorfile = open("Mentor.csv", 'w')
 menteefile = open("Mentee.csv", 'w')
 
 while True:
-
 	line = sys.stdin.readline()
 
 	if not line:
-		break
-
-	#print line
+	    menteefile.close()
+	    mentorfile.close()
+	    break
 
 	linearr = line.split(',')
-	#print linearr #0 indexed
 
 	if linearr[11] == "TRUE":
-		addToMentorTable(linearr, mentorfile)
+	    addToMentorTable(linearr, mentorfile)
 
 	if linearr[12] == "TRUE":
-		addToMenteeTable(linearr, menteefile)
-
-	lineout = ','.join(linearr)
-	print lineout
+	    addToMenteeTable(linearr, menteefile)
