@@ -111,6 +111,13 @@ function queryRowsExcelString($database, $query)
     $tableQuery = mysqli_query($database,$query);
     $row = mysqli_fetch_array($tableQuery);
 
+   /*
+    * Used here to spot boolean values 
+    * To output 'YES' and 'NO' instead of
+    * 'TRUE' and 'FALSE' per client request
+    */
+    $keys = array_keys($row);
+
     //The rows of the table as an Excel readable string
     $values = "";
 
@@ -123,11 +130,25 @@ function queryRowsExcelString($database, $query)
 
 	for($i = 0; $i < count($row)/2; $i = $i + 1)
 	{
-	    if($i === 0)
+	    //Check if this is a boolean value and adjust accordingly
+	    $column = $keys[$i*2+1];
+	    if($column[0] == "I" && $column[1] == "s")
+	    {
+		if($row[$i] == "0")
+		{
+		    $row[$i] = "NO";
+		}
+		else
+		{
+		    $row[$i] = "YES";
+		}
+	    }
+
+	    if($i === 0) //Don't add a comma
 	    {
 		$values = $values . "\"" . $row[$i] . "\"";
 	    }
-	    else
+	    else //Add a comma
 	    {
 		$values = $values . ",\"" . $row[$i] . "\"";
 	    }
