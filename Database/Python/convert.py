@@ -25,11 +25,11 @@ def addToMentorTable(oldarr, mentorfile):
 	newarr.append(oldarr[4])   #Work Phone
 	newarr.append(oldarr[5])   #Work Phone Ext.
 	newarr.append(oldarr[6])   #Mobile Phone
-	newarr.append(" ")         #Street Address
-	newarr.append(" ")         #City
-	newarr.append(" ")         #State
+	newarr.append(oldarr[7])   #Street Address
+	newarr.append(oldarr[8])   #City
+	newarr.append(oldarr[9])   #State
 	newarr.append(" ")         #Country
-	newarr.append(" ")         #Zip
+	newarr.append(oldarr[10])  #Zip
 	newarr.append("1")         #IsMentor
 
 	if oldarr[12] == "TRUE":
@@ -44,15 +44,9 @@ def addToMentorTable(oldarr, mentorfile):
 	    	newarr.append("0") #IsSponsor
 	newarr.append(oldarr[15])  #Years In Current Position
 	newarr.append(oldarr[16])  #Years In Company
-	newarr.append(" ")         #Company Name
-	newarr.append(" ")         #Position
-	
-	if oldarr[17] == "TRUE":
-		newarr.append("1") #ShowInMatchResult
-	else:
-	    	newarr.append("0") #ShowInMatchResult
-
-	newarr.append(oldarr[18])  #Title
+	newarr.append(oldarr[21])  #Company Name
+	newarr.append(oldarr[18])  #Position
+	newarr.append("1")         #IsAvailableToBeMatched
 	newarr.append(oldarr[20])  #Background
 
 	lineout = ','.join(newarr)
@@ -71,11 +65,11 @@ def addToMenteeTable(oldarr, menteefile):
 	newarr.append(oldarr[2])   #Middle
 	newarr.append(oldarr[3])   #Last
 	newarr.append(oldarr[6])   #Mobile Phone
-	newarr.append(" ")         #Street Address
-	newarr.append(" ")         #City
-	newarr.append(" ")         #State
+	newarr.append(oldarr[7])   #Street Address
+	newarr.append(oldarr[8])   #City
+	newarr.append(oldarr[9])   #State
 	newarr.append(" ")         #Country
-	newarr.append(" ")         #Zip
+	newarr.append(oldarr[10])  #Zip
 	
 	if oldarr[11] == "TRUE":
 		newarr.append("1") #IsMentor
@@ -84,11 +78,7 @@ def addToMenteeTable(oldarr, menteefile):
 	
 	newarr.append("1")         #IsMentee
 	newarr.append("0")         #IsAdmin
-	
-	if oldarr[17] == "TRUE":
-		newarr.append("1") #ShowInMatchResult
-	else:
-	    	newarr.append("0") #ShowInMatchResult
+	newarr.append("1")         #IsAvailableToBeMatched
 	newarr.append(oldarr[20])  #Background
 
 	lineout = ','.join(newarr)
