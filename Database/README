@@ -1,0 +1,15 @@
+Conventions:
+	(1) When naming columns in the database :
+		Use camel case and include capitalization of the first letter
+			e.g. (FirstName, LastName, IsMentor,...)
+		Non-boolean values do NOT begin with the word 'Is'
+		Boolean values begin with the word 'Is' 
+			e.g. (IsMentor, IsMentee, IsInMatchResult)
+		NOTE: Failure to follow the boolean naming convention will
+		      result in non-user friendly output from the functions
+		      in excelFunction.php. For instance, the client would
+		      like to see "YES" and "NO" in the excel spreadsheet
+		      instead of "TRUE" and "FALSE" or "1" and "0" in the
+		      spreadsheet. Following this convention allows the php
+		      code to correctly modify the data in the database to
+		      be represented as the client desires.
