@@ -26,6 +26,7 @@ $filename = "testTables.csv";
 if (mysqli_connect_errno($database))
 {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    exit();
 }
 
 $toWrite = "";
@@ -34,18 +35,33 @@ for ($i = 0; $i < count($tableNames); $i++)
 {
     $tableName = $tableNames[$i];
     $query = "SELECT * FROM $tableName WHERE IsMentor = 1";
-    $label = $tableName;
-    $toWrite = $toWrite . toExcel($database,$query,$label);
+    $label = $tableName . "-AllData";
+    $toWrite = $toWrite . toExcel($database,$query,$label) . "\n";
 }
 
 for ($i = 0; $i < count($tableNames); $i++)
 {
     $tableName = $tableNames[$i];
     $query = "SELECT * FROM $tableName WHERE IsMentor = 0";
-    $label = $tableName;
-    $toWrite = $toWrite . toExcel($database,$query,$label);
+    $label = $tableName . "-IsMentor=0";
+    $toWrite = $toWrite . toExcel($database,$query,$label) . "\n";
 }
 
+for ($i = 0; $i < count($tableNames); $i++)
+{
+    $tableName = $tableNames[$i];
+    $query = "SELECT Email FROM $tableName WHERE IsMentor = 0";
+    $label = $tableName . "Email-IsMentor=0";
+    $toWrite = $toWrite . toExcel($database,$query,$label) . "\n";
+}
+
+for ($i = 0; $i < count($tableNames); $i++)
+{
+    $tableName = $tableNames[$i];
+    $query = "SELECT Email FROM $tableName";
+    $label = $tableName . "-Email";
+    $toWrite = $toWrite . toExcel($database,$query,$label) . "\n";
+}
 mysqli_close($database);
 
 /* Write the output to an Excel readable file */
