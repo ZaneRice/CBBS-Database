@@ -34,7 +34,7 @@ $toWrite = "";
 for ($i = 0; $i < count($tableNames); $i++)
 {
     $tableName = $tableNames[$i];
-    $query = "SELECT * FROM $tableName WHERE IsMentor = 1";
+    $query = "SELECT * FROM $tableName";
     $label = $tableName . "-AllData";
     $toWrite = $toWrite . toExcel($database,$query,$label) . "\n";
 }
