@@ -8,8 +8,7 @@
  */
 require 'excelFunctions.php';
 
-//$database = mysqli_connect("","","","");
-$database = mysqli_connect("oss-ci.cs.clemson.edu","cpsc472","myDB4dmin","cpsc472");
+$database = mysqli_connect("","","","");
 
 /* 
  * The names of the tables which need to be written in an Excel
