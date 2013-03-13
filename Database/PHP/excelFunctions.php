@@ -77,8 +77,13 @@ function combineColumnsAndRows($columns,$rows)
 function queryColumnsExcelString($database, $query)
 {
     $tableQuery = mysqli_query($database, $query);
-
     $row = mysqli_fetch_array($tableQuery);
+
+    if($row == NULL)
+    {
+	return "";
+    }
+
     $keys = array_keys($row);
 
     //The columns of the table as an Excel readable string
@@ -111,7 +116,12 @@ function queryRowsExcelString($database, $query)
     $tableQuery = mysqli_query($database,$query);
     $row = mysqli_fetch_array($tableQuery);
 
-   /*
+    if($row == NULL)
+    {
+	return "";
+    }
+    
+    /*
     * Used here to spot boolean values 
     * To output 'YES' and 'NO' instead of
     * 'TRUE' and 'FALSE' per client request
