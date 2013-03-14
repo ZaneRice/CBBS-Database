@@ -44,27 +44,29 @@ for($i = 0; $i < count($tableNames); $i++)
 	$row = fgets($toParse);
 
 	/* Build insertion query */
-	$valuesArray = explode(",",$row);
-
-	for($j = 0; $j < count($valuesArray); $j++)
+	$row = trim($row);
+	if($row != NULL && $row != "")
 	{
-	    if($j === 0)
+	    $valuesArray = explode(",",$row);
+	    $valuesString = "";
+
+	    for($j = 0; $j < count($valuesArray); $j++)
 	    {
-		$valuesString = "'" . $valuesArray[$j] . "'";
+		if($j === 0)
+		{
+		    $valuesString = $valuesString . "'" . $valuesArray[$j] . "'";
+		}
+		else
+		{
+		    $valuesString = $valuesString . ",'" . $valuesArray[$j] . "'";
+		}
 	    }
-	    else
-	    {
-		$valuesString = ",'" . $valuesArray[$j] . "'";
-	    }
+
+	    $query = "INSERT INTO $tableName VALUES($valuesString)";
+
+	    /* Add the row to the database */
+	    mysqli_query($database,$query);
 	}
-
-	var_export($valuesString);
-	print("\n");
-
-	$query = "INSERT INTO $tableName VALUES($valuesString)";
-	
-	/* Add the row to the database */
-	mysqli_query($database,$query);
     }
 
     fclose($toParse);
