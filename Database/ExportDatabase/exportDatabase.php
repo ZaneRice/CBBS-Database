@@ -8,9 +8,9 @@
  */
 require '../ExcelFunctions/excelFunctions.php';
 
-if(count($argv) != 6)
+if(count($argv) < 7)
 {
-    print("Usage: php $argv[0] hostName userName password databaseName outputFileName\n");
+    print("Usage: php $argv[0] hostName userName password databaseName outputFileName [ListOfTablesToExport]\n");
     exit();
 }
 $hostName = $argv[1];
@@ -27,7 +27,14 @@ $fileName = $argv[5];
  * The names of the tables which need to be written in an Excel
  * readable format.
  */
-$tableNames = array("Mentor", "Mentee");
+$tableNames = array();
+for($i = 6; $i < count($argv); $i++)
+{
+    $tableNames[$i-6] = $argv[$i];
+}
+
+var_export($tableNames);
+print("\n");
 
 $database = mysqli_connect($hostName,$userName,$password,$databaseName);
 // Check connection
