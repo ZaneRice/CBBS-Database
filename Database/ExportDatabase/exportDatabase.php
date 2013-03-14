@@ -33,9 +33,6 @@ for($i = 6; $i < count($argv); $i++)
     $tableNames[$i-6] = $argv[$i];
 }
 
-var_export($tableNames);
-print("\n");
-
 $database = mysqli_connect($hostName,$userName,$password,$databaseName);
 // Check connection
 if (mysqli_connect_errno($database))
