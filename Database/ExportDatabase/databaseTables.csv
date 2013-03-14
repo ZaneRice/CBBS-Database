@@ -1,8 +1,8 @@
 "Mentor"
-"Email","FirstName","MiddleName","LastName","WorkPhone","WorkTelephoneExtention","MobilePhone","StreetAddress","City","State","Country","ZipCode","IsMentor","IsMentee","IsAdmin","IsSponsor","YearsInCurrentPosition","YearsInCompany","CompanyName","Position","IsInMatchResult","Title","Background"
-"steve@clemson.edu","Dennis","Elliott","Stevenson","8646565880","","8646565880"," "," "," "," "," ","YES","NO","NO","NO","30","32"," "," ","YES","Associate Professor","Art"
+"Email","FirstName","MiddleName","LastName","WorkPhone","WorkTelephoneExtention","MobilePhone","StreetAddress","City","State","Country","ZipCode","IsMentor","IsMentee","IsAdmin","IsSponsor","YearsInCurrentPosition","YearsInCompany","CompanyName","Position","IsAvailableToBeMatched","Background"
+"steve@clemson.edu","Dennis","Elliott","Stevenson","8646565880","","8646565880","123 Evergreen Drive","Clemson","South Carolina"," ","29631","YES","NO","NO","NO","30","32","College of Business and Behavioral Scien","Associate Professor","YES","Art"
 
 "Mentee"
-"Email","University","GraduationYear","Major","FirstName","MiddleName","LastName","MobilePhone","StreetAddress","City","State","Country","ZipCode","IsMentor","IsMentee","IsAdmin","IsInMatchResult","Background"
-"exampleMentee@clemson.edu"," "," "," ","FirstExample","MiddleExample","LastExample","5555555555"," "," "," "," "," ","NO","YES","NO","YES","Example Background"
+"Email","University","GraduationYear","Major","FirstName","MiddleName","LastName","MobilePhone","StreetAddress","City","State","Country","ZipCode","IsMentor","IsMentee","IsAdmin","IsAvailableToBeMatched","Background"
+"exampleMentee@clemson.edu"," "," "," ","FirstExample","MiddleExample","LastExample","5555555555","Example Street Address","Example City","Example State"," ","55555","NO","YES","NO","YES","Example Background"
 

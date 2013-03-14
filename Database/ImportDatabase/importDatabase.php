@@ -11,8 +11,27 @@
  * 	tables in the database. For example, to load data
  * 	into the Mentor table, the file would need to be
  * 	named Mentor.csv.
+ *
+ * This script executes the python script given on the command line using
+ * old database given as stdin for the script.
  */
-$database = mysqli_connect("","","","");
+
+/* Run the python script to generate parsable files for the new database */
+if(count($argv) != 7)
+{
+    print("Usage: php $argv[0] hostName userName password databaseName path/to/convert.py path/to/oldDatabase.csv\n");
+    exit();
+}
+$hostName = $argv[1];
+$userName = $argv[2];
+$password = $argv[3];
+$databaseName = $argv[4];
+$convert = $argv[5];
+$oldDatabase = $argv[6];
+
+$database = mysqli_connect($hostName,$userName,$password,$databaseName);
+
+exec("$convert < $oldDatabase");
 
 // Check connection
 if (mysqli_connect_errno($database))
