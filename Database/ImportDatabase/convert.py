@@ -87,6 +87,17 @@ def addToMenteeTable(oldarr, menteefile):
 mentorfile = open("Mentor.csv", 'w')
 menteefile = open("Mentee.csv", 'w')
 
+#Make sure to write out the names of the tables
+#for which files are being created.
+#This is for compatibility with the importDatabase.php
+#script.
+TableNames = open("TableNames", 'w')
+tableNames = ["Mentor","Mentee"]
+for name in tableNames:
+	TableNames.write(name)
+	TableNames.write('\n')
+TableNames.close()
+
 while True:
 	line = sys.stdin.readline()
 
@@ -102,3 +113,4 @@ while True:
 
 	if linearr[12] == "TRUE":
 	    addToMenteeTable(linearr, menteefile)
+

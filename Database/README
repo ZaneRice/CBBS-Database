@@ -1,3 +1,59 @@
+ExcelFunctions:
+	This directory contains the file excelFunctions.php. This file defines
+	many functions which are useful in creating .csv format files from
+	database queries.
+
+	The most important function is highlighted here:
+		toExcel($database, $query, $label) --
+			returns a string formatted to be written to a .csv file
+			The string is formatted as follows:
+			"$label"\n
+			"queryResultColumn1","queryResultColumn2",....\n
+			"row1ColumnData1","row1ColumnData2",....\n
+			"row2ColumnData1","row2ColumnData2",....\n
+			....
+			
+			The string will have the following format when written
+			to a .csv file and opened appropriately in Excel:
+			(|text| indicates a cell in Excel)
+				|label             | |                  |
+				|queryResultColumn1| |queryResultColumn2| ....
+				|row1ColumnData1   | |row1ColumnData2   | ....
+				|row2ColumnData1   | |row2ColumnData2   | ....
+				...
+
+ExportDatabase:
+	This directory contains the file exportDatabase.php. This script
+	can be run (given the necessary command line arguments) to
+	export all of the data in a set of tables into an Excel
+	readable file.
+
+	Essentially this script just calls
+          exportTablesToExcel($database, $tableNames,$filename)
+	with the data given on the command line.
+
+ImportDatabase:
+	This directory contains the file importDatabase.php. Once given
+	the login information for the database, the path to convert.py
+	(also located in ImportDatabase), and the path to the old
+	database saved as a .csv file, this script will convert the old
+	database into files corresponding to tables in the new database.
+	The files are then immediately parsed and the data is added to
+	the new database. 
+
+ 	IMPORTANT:
+  		importDatabase.php requires that the tables for which the data
+  		is going to be added to already exists in the database.
+  		Obviously there will not be any data in the tables, but
+  		the tables with the proper column names and column order
+  		must exist.
+ 
+  		The easiest way to accomplish this is to load one of the
+ 		saved .sql files of the database. You should probably
+  		load the most recent one. The older .sql files may not
+  		be compatible with the convert.py scripts output and
+  		therefore are not compatible with importDatabase.php.
+
 Conventions:
 	(1) When naming columns in the database :
 		Use camel case and include capitalization of the first letter
@@ -13,3 +69,6 @@ Conventions:
 		      spreadsheet. Following this convention allows the php
 		      code to correctly modify the data in the database to
 		      be represented as the client desires.
+	(2) Please do not commit or push code which has the login information
+	    for the database. Remember, this is not a private repository,
+	    anyone can pull this code.
