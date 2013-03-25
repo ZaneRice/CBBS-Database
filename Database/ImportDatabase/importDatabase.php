@@ -66,15 +66,26 @@ $tableNames = array();
 
 $toParse = fopen("TableNames","r");
 
+if(!$toParse)
+{
+    printf("Failed to open $fileName. Exiting.\n");
+    exit();
+}
+
 while(!feof($toParse))
 {
     //Have to trim() off the '\n'
-    $tableNames[] = trim(fgets($toParse));
+    $tableName = trim(fgets($toParse));
+    if($tableName != "")
+    {
+	$tableNames[] = $tableName;
+    }
 }
 
 for($i = 0; $i < count($tableNames); $i++)
 {
     $tableName = $tableNames[$i];
+    printf("%s\n", $tableName);
 
     /*
      * The current file being parsed.
@@ -82,6 +93,13 @@ for($i = 0; $i < count($tableNames); $i++)
     $fileName = $tableName . ".csv";
 
     $toParse = fopen($fileName, "r");
+
+    if(!$toParse)
+    {
+	printf("Failed to open $fileName. Exiting.\n");
+	mysqli_close($database);
+	exit();
+    }
 
     while(!feof($toParse))
     {
