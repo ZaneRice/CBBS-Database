@@ -16,6 +16,24 @@
     file can be called exportDatabaseFunctions.php. Then, the
     exportDatabase.php script will simply call this function
     with the parsed command line.
+
+(3 - depends on 1 being done)
+	Seperate the importDatabase function into two functions:
+		importOldDatabase() -- which is identical to the
+		current importDatabase() function
+		
+		importDatabase() -- which will skip running the
+		convert.py script and will simply add the data in
+		the .csv file to the database.
+
+(4 - depends on 3 being done)
+	importDatabase() -- change this function to be able to
+	handle altered column structure, if that is even possible.
+
+	I think just adding the "new" columns to the end of the 
+	table and adding the data that she puts in that column
+	as a varchar is probably the best we can do.
+
 ---------------STUFF THAT'S DONE---------------------------
 (DONE) Have convert.py output a file named TableNames
     which contains the name of a table with a corresponding
