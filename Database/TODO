@@ -1,4 +1,4 @@
-(1) Currently the importDatabase.php script must be ran from
+(Zane) Currently the importDatabase.php script must be ran from
     the command line. This is not very useful for programmers
     who simply want to import and invoke a function from their 
     own script. Most of importDatabase.php (the part that does
