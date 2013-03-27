@@ -43,7 +43,6 @@ function importDatabase($hostName,$userName,$password,$databaseName,$convert,$ol
     for($i = 0; $i < count($tableNames); $i++)
     {
 	$tableName = $tableNames[$i];
-	printf("%s\n", $tableName);
 
 	/*
 	 * The current file being parsed.

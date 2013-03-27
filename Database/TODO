@@ -1,13 +1,23 @@
-(Zane) Currently the importDatabase.php script must be ran from
-    the command line. This is not very useful for programmers
-    who simply want to import and invoke a function from their 
-    own script. Most of importDatabase.php (the part that does
-    not parse the command line) can be abstracted to a function
-    accepting the interpreted command line arguments. The new
-    file can be called importDatabaseFunctions.php. Then, the
-    importDatabase.php script will simply call this function
-    with the parsed command line.
+###############################################################
+	Some tasks depend on other tasks being done first.
+	This is denoted by the
+		x.y notation.
+	Lower valued y's must be done before higher valued y's
+	of the same x.
+	
+	Tasks with different x values may be done at any time
+	independent of eachother.
 
+	A task which has been complted should be moved to the
+	bottom and the x.y value should be replaced by DONE.
+
+	If you are working on a task, make sure to put your name
+	next to the x.y value as in:
+		Name x.y
+	That way, others will know to work on something else
+	or to consult you before working on the task that
+	you have already been working on.
+###############################################################
 (2) Currently the exportDatabase.php script must be ran from
     the command line. This is not very useful for programmers
     who simply want to import and invoke a function from their 
@@ -18,22 +28,37 @@
     exportDatabase.php script will simply call this function
     with the parsed command line.
 
-(3 - depends on 1 being done)
-	Seperate the importDatabase function into two functions:
+(3.0)
+	Seperate the importDatabase() function into two functions:
 		importOldDatabase() -- which is identical to the
 		current importDatabase() function
 		
-		importDatabase() -- which will skip running the
-		convert.py script and will simply add the data in
-		the .csv file to the database.
+		importDatabase() -- adds the data in a .csv file
+		to the database
+			--assume that the file has the format
+		"TableName"
+		"Column1", "Column2",...
+		"Data1","Data2",...
+		"Data1","Data2",...
+		
+		"TableName2"
+		...
 
-(4 - depends on 3 being done)
-	importDatabase() -- change this function to be able to
-	handle altered column structure, if that is even possible.
+		***The newline between tables is optional and should not
+		be used as a flag when parsing the file.
+		Just check if the line from the file (after being trimmed
+		of whitespace) is in fact the name of a table in the 
+		database. If it is an existing table, then assume the
+		next line contains the columns of the table and
+		the following lines are the data of the table until another
+		row is encountered which is a valid table name.***
 
-	I think just adding the "new" columns to the end of the 
-	table and adding the data that she puts in that column
-	as a varchar is probably the best we can do.
+		Do not assume that all the columns will be present. Just add
+		the data to the columns that are present in the spreasheet.
+
+(6)	Need to add a "Post-Graduate Degree" column.
+	Or maybe it should be called "ExtendedDegree" because 
+	that is what Amy kept saying.
 
 ---------------STUFF THAT'S DONE---------------------------
 (DONE) Have convert.py output a file named TableNames
@@ -49,3 +74,13 @@
     more (or less) or differently named tables, the 
     importDatabase.php script will not have to be edited
     in any way.
+
+(DONE) Currently the importDatabase.php script must be ran from
+    the command line. This is not very useful for programmers
+    who simply want to import and invoke a function from their 
+    own script. Most of importDatabase.php (the part that does
+    not parse the command line) can be abstracted to a function
+    accepting the interpreted command line arguments. The new
+    file can be called importDatabaseFunctions.php. Then, the
+    importDatabase.php script will simply call this function
+    with the parsed command line.
