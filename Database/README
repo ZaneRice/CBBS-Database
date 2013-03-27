@@ -1,3 +1,6 @@
+Directory:
+	Description of contents of that directory
+
 ExcelFunctions:
 	This directory contains the file excelFunctions.php. This file defines
 	many functions which are useful in creating .csv format files from

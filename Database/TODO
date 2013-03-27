@@ -1,5 +1,21 @@
-If anyone thinks of anything that needs to be done, list
-it here.
+(1) Currently the importDatabase.php script must be ran from
+    the command line. This is not very useful for programmers
+    who simply want to import and invoke a function from their 
+    own script. Most of importDatabase.php (the part that does
+    not parse the command line) can be abstracted to a function
+    accepting the interpreted command line arguments. The new
+    file can be called importDatabaseFunctions.php. Then, the
+    importDatabase.php script will simply call this function
+    with the parsed command line.
+(2) Currently the exportDatabase.php script must be ran from
+    the command line. This is not very useful for programmers
+    who simply want to import and invoke a function from their 
+    own script. Most of exportDatabase.php (the part that does
+    not parse the command line) can be abstracted to a function
+    accepting the interpreted command line arguments. The new
+    file can be called exportDatabaseFunctions.php. Then, the
+    exportDatabase.php script will simply call this function
+    with the parsed command line.
 ---------------STUFF THAT'S DONE---------------------------
 (DONE) Have convert.py output a file named TableNames
     which contains the name of a table with a corresponding
