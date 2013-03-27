@@ -7,6 +7,7 @@
     file can be called importDatabaseFunctions.php. Then, the
     importDatabase.php script will simply call this function
     with the parsed command line.
+
 (2) Currently the exportDatabase.php script must be ran from
     the command line. This is not very useful for programmers
     who simply want to import and invoke a function from their 
