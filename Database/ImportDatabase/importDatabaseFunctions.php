@@ -1,18 +1,10 @@
 <?php
-function importDatabase($hostName,$userName,$password,$databaseName,$convert,$oldDatabase)
+function importDatabase($database,$convert,$oldDatabase)
 {
-    $database = mysqli_connect($hostName,$userName,$password,$databaseName);
-
     /* Run the python script to generate parsable files for the new database */
     exec("$convert < $oldDatabase");
-
-    // Check connection
-    if (mysqli_connect_errno($database))
-    {
-	echo "Failed to connect to MySQL: " . mysqli_connect_error();
-	exit();
-    }
-
+    
+    
     /* 
      * The names of the tables for which data will be added.
      * These are used to create the file names for fopen()

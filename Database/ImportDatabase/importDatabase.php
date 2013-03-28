@@ -44,5 +44,14 @@ $databaseName = $argv[4];
 $convert = $argv[5];
 $oldDatabase = $argv[6];
 
-importDatabase($hostName,$userName,$password,$databaseName,$convert,$oldDatabase);
+$database = mysqli_connect($hostName,$userName,$password,$databaseName);
+
+// Check connection
+if (mysqli_connect_errno($database))
+{
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    exit();
+}
+
+importDatabase($database,$convert,$oldDatabase);
 ?>

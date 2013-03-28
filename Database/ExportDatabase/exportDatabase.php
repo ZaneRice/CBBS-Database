@@ -1,10 +1,18 @@
 <?php
 /*
- * Creates a file named databaseTables.csv which can be read
- * in by Excel.
+ * This script is meant to be executed from the command line
+ * and is simply a convenience function for using exportTablesToExcel().
+ *
+ * If your code needs to export tables to an Excel format then it should
+ * call exportTablesToExcel with the proper arguments NOT this script.
+ *
+ * Creates a file named $fileName which can be read in by Excel.
  *
  * The file is formatted to be human-readable and will contain the
  * data from all tables listed in $tableNames
+ *
+ * Both the $fileName and $tableNames variables are set based on the
+ * values passed in from the command line.
  */
 require '../ExcelFunctions/excelFunctions.php';
 
