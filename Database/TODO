@@ -100,6 +100,9 @@
 	for each row of a table
 
 (1.1)   Add column : "ExtendedDegree" to Mentee after "Major"
+
+(2.0)   Add a table to the database named Administrator
+		Probably just give it generic stuff for right now
 ---------------STUFF THAT'S DONE---------------------------
 (DONE) Have convert.py output a file named TableNames
     which contains the name of a table with a corresponding
