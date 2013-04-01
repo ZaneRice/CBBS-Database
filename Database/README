@@ -1,6 +1,11 @@
 Directory:
 	Description of contents of that directory
 
+.:
+	TODO -- A list of things to do. Make sure to read the top comment
+		to avoid confusing everyone.
+	*.sql -- backups of the database
+
 ExcelFunctions:
 	This directory contains the file excelFunctions.php. This file defines
 	many functions which are useful in creating .csv format files from
