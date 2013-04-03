@@ -1,5 +1,5 @@
 ###############################################################
-	Some tasks depend on other tasks being done first.
+	*Some tasks depend on other tasks being done first.
 	This is denoted by the
 		x.y notation.
 	Lower valued y's must be done before higher valued y's
