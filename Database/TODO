@@ -68,9 +68,6 @@
 
 (1.1)   Add column : "ExtendedDegree" to Mentee after "Major"
 
-(2.0)   Add a table to the database named Administrator
-		Probably just give it generic stuff for right now
-
 (3.0)   Add the following columns to the Mentee table (make them varchar(200)
 	because alot of these are going to allow for multiple selections
 	from a list, so they could get really long)
@@ -139,6 +136,10 @@
     file can be called importDatabaseFunctions.php. Then, the
     importDatabase.php script will simply call this function
     with the parsed command line.
+
+(DONE)   Add a table to the database named Administrator
+         Probably just give it generic stuff for right now
+
 (DONE) We need to change convert.py to print out the names
 	of the columns into the files containing the 
 	table's data (i.e. Mentor.csv and Mentee.csv).
