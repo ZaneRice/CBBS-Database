@@ -1,5 +1,5 @@
 ###############################################################
-	*Some tasks depend on other tasks being done first.
+	Some tasks depend on other tasks being done first.
 	This is denoted by the
 		x.y notation.
 	Lower valued y's must be done before higher valued y's
@@ -22,40 +22,7 @@
 	or to consult you before working on the task that
 	you have already been working on.
 ###############################################################
-(1.0)
-	We need to change convert.py to print out the names
-	of the columns into the files containing the 
-	table's data (i.e. Mentor.csv and Mentee.csv).
 
-	Right now *.csv files have the format:
-		row1
-		row2
-		row3
-
-	All that needs to be changed is to print the column
-	names at the top:
-		column1 column2 column3
-		row1
-		row2
-		row3
-
-	**The rows contain data for each column**
-
-	Then importDatabase() needs to add the data only to
-	those columns.
-
-	Which means 
-	INSERT INTO table_name
-	VALUES(value1, value2,..)
-	
-	becomes
-
-	 INSERT INTO table_name (column1, column2, ...)
-	 VALUES (value1, value2, ...)
-
-	This will allow us to add columns to any part of the
-	existing Mentor and Mentee tables without having
-	to change the convert.py or importDatabase() scripts.
 (1.1)
 	rename the importDatabase() function to importOldDatabase() 
 	rename importDatabase.php to importOldDatabase.php 
@@ -172,3 +139,36 @@
     file can be called importDatabaseFunctions.php. Then, the
     importDatabase.php script will simply call this function
     with the parsed command line.
+(DONE) We need to change convert.py to print out the names
+	of the columns into the files containing the 
+	table's data (i.e. Mentor.csv and Mentee.csv).
+
+	Right now *.csv files have the format:
+		row1
+		row2
+		row3
+
+	All that needs to be changed is to print the column
+	names at the top:
+		column1 column2 column3
+		row1
+		row2
+		row3
+
+	**The rows contain data for each column**
+
+	Then importDatabase() needs to add the data only to
+	those columns.
+
+	Which means 
+	INSERT INTO table_name
+	VALUES(value1, value2,..)
+	
+	becomes
+
+	 INSERT INTO table_name (column1, column2, ...)
+	 VALUES (value1, value2, ...)
+
+	This will allow us to add columns to any part of the
+	existing Mentor and Mentee tables without having
+	to change the convert.py or importDatabase() scripts.
