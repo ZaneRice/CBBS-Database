@@ -68,50 +68,8 @@
 
 (1.1)   Add column : "ExtendedDegree" to Mentee after "Major"
 
-(3.0)   Add the following columns to the Mentee table (make them varchar(200)
-	because alot of these are going to allow for multiple selections
-	from a list, so they could get really long)
-		PreferredName
-		CUID
-		Concentration (related to Major so put it near there)
-		Minor
-		IndustryOfInterest
-		
-		Change the address related columns to be prefixed by 
-		"Current"
-		
-		Add a column for each address related column
-		prefixed by "Permanent"
-			--Long story short, she wants to have
-			the user's current address and permanent
-			address
 
-		Gender
-		
-		HobbiesAndInterests
-		MBTI
-		
-		(make this one varchar(512))
-		Activities
-(4.0)	Add the following columns to the Mentor table (make them varchar(200)
-	because alot of these are going to allow for multiple selections
-	from a list, so they could get really long)
-		PreferredName
-		GraduationYear
-		Major
-		Concentrations
-		Minor
-		ExtendedDegree
-		CurrentIndustry
-		OtherIndustryExpertise
-		Gender
-		HobbiesAndInterest
-		MBTI
-		
-		(make this one varchar(512))
-		Activities
 
-		Change address columns to be prefixed by "Permanent"
 ---------------STUFF THAT'S DONE---------------------------
 (DONE) Have convert.py output a file named TableNames
     which contains the name of a table with a corresponding
@@ -173,3 +131,49 @@
 	This will allow us to add columns to any part of the
 	existing Mentor and Mentee tables without having
 	to change the convert.py or importDatabase() scripts.
+
+(DONE)   Add the following columns to the Mentee table (make them varchar(200)
+	because alot of these are going to allow for multiple selections
+	from a list, so they could get really long)
+		PreferredName
+		CUID
+		Concentration (related to Major so put it near there)
+		Minor
+		IndustryOfInterest
+		
+		Change the address related columns to be prefixed by 
+		"Current"
+		
+		Add a column for each address related column
+		prefixed by "Permanent"
+			--Long story short, she wants to have
+			the user's current address and permanent
+			address
+
+		Gender
+		
+		HobbiesAndInterests
+		MBTI
+		
+		(make this one varchar(512))
+		Activities
+
+(DONE)	Add the following columns to the Mentor table (make them varchar(200)
+	because alot of these are going to allow for multiple selections
+	from a list, so they could get really long)
+		PreferredName
+		GraduationYear
+		Major
+		Concentrations
+		Minor
+		ExtendedDegree
+		CurrentIndustry
+		OtherIndustryExpertise
+		Gender
+		HobbiesAndInterest
+		MBTI
+		
+		(make this one varchar(512))
+		Activities
+
+		Change address columns to be prefixed by "Permanent"
