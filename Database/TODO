@@ -66,9 +66,6 @@
 	 VALUES (value1, value2, ...)
 	for each row of a table
 
-(1.1)   Add column : "ExtendedDegree" to Mentee after "Major"
-
-
 
 ---------------STUFF THAT'S DONE---------------------------
 (DONE) Have convert.py output a file named TableNames
@@ -135,6 +132,7 @@
 (DONE)   Add the following columns to the Mentee table (make them varchar(200)
 	because alot of these are going to allow for multiple selections
 	from a list, so they could get really long)
+		Add column : "ExtendedDegree" to Mentee after "Major"
 		PreferredName
 		CUID
 		Concentration (related to Major so put it near there)
