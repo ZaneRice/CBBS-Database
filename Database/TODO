@@ -24,16 +24,10 @@
 ###############################################################
 
 (1.1)
-	rename the importDatabase() function to importOldDatabase() 
-	rename importDatabase.php to importOldDatabase.php 
-	 -- make sure to change the call to importDatabase() within
-	    the script to importOldDatabase.php
-		
-	Then create this function in importDatabaseFunctions.php:
-	importDatabase($database, $file) 
-	-- adds the data in the file $file
-	to the database. The file is assumed to be
-	of the format created by exportDatabase().
+	ImportDatabase/importDatabaseFunction.php : importDatabase($database, $file) 
+	-- Changes the data in the database to match the data in $file
+	   $file is assumed to have the following format
+
 	This is the format:
 	"TableName"
 	"Column1", "Column2",...
@@ -43,29 +37,75 @@
 	"TableName2"
 	...
 
-	***
-	The newline between tables is optional and should not
-	be used as a flag when parsing the file.
-	Just check if the line from the file (after being trimmed
-	of whitespace) is in fact the name of a table in the 
-	database. If it is an existing table, then assume the
-	next line contains the columns of the table and
-	the following lines are the data of the table until another
-	row is encountered which is a valid table name.
+	Here is the pseudocode for importDatabase()
+	  {    
+		while(!EOF) //Can't remember off the top of my head
+                {           //what the actual way to check for EOF is
+			tablename = readTableName();
+			columns = readColumns();
+			data = readData();
+			updateDatabase(database, tablename,columns,data);
+		}
+	  }
 
-	If you parse a line which is only whitespace (the "" after
-	trimming), then simply ignore it and move on to the next
-	line.
-	***
+	Here is the pseudocode for readTableName()
 
-	Do not assume that all the columns will be present. Just add
-	the data to the columns that are present in the spreadsheet.
+		{
+		    tablename = readline;
+		    removeQuotes(tableName); //Change "TableName" to TableName
+		    return tableName;
+		}
+	
+	Here is the pseudocode for readColumns();
 
-	Essentially you are trying to do the following query
-	 INSERT INTO table_name (column1, column2, ...)
-	 VALUES (value1, value2, ...)
-	for each row of a table
+		{
+		    columns = readline;
+		    columns = removeQuotes(columns);
+		    columns = explode(columns,',');
+		    return columns;
+		}
 
+	Here is the pseudocode for readData()
+
+		{
+		    //data will be an array, which will have arrays added to it.
+		    //That is, data is a 2D array
+		    data = Array();
+
+		    line = readline;
+		    while(line != "")
+		    {
+		    	row = replaceQuotesWithSingleQuotes(row);
+		    	row = explode(row,',');
+			data[] = row; //I think this works, maybe not
+		    	row = readline;
+		    }
+		}
+			
+	Here is the pseudocode for updateDatabase(database, tablename,columns,data)
+
+		{
+		    for each element in data
+		    {
+			    query = generateQuery(tablename,columns,element);
+			    mysqli_query(database,query);
+		    }
+		}
+
+	Here is the pseudocode for generateQuery(tablename,columns,element)
+
+		{
+		    //Genereate the SET part of the query
+		    set = ""
+		    for index i in columns
+		    {
+			set = set . column[i] . "=" . element[i];
+			if (i+1 < numberOfColumns)
+			    set = set . ",";
+		    }
+
+		    return "UPDATE " . tablename . " SET" . set . " WHERE " . column[0] . "=" . element[0];
+		}
 
 ---------------STUFF THAT'S DONE---------------------------
 (DONE) Have convert.py output a file named TableNames

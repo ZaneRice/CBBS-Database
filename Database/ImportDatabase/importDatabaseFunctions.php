@@ -1,9 +1,13 @@
 <?php
-function importDatabase($database,$convert,$oldDatabase)
+function importDatabase($database,$file)
+{
+
+}
+
+function importOldDatabase($database,$convert,$oldDatabase)
 {
     /* Run the python script to generate parsable files for the new database */
     exec("$convert < $oldDatabase");
-    
     
     /* 
      * The names of the tables for which data will be added.
