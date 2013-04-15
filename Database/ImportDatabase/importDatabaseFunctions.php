@@ -4,7 +4,22 @@ function importDatabase($database,$file)
 
 }
 
-function generateUpdateQuery($
+function generateUpdateQuery($tableName, $columns, $rowData)
+{
+    //Genereate the SET part of the query
+    $i = 0;
+    $set = "";
+
+    for($i = 0; $i < count($columns); $i=$i+1)
+    {
+	$set = $set . $columns[$i] . "=" . $rowData[$i];
+	if ($i+1 < count($columns))
+	    $set = $set . ",";
+    }
+
+    return "UPDATE " . $tableName . " SET " . $set . " WHERE " . $columns[0] . "=" . $rowData[0];
+}
+
 function importOldDatabase($database,$convert,$oldDatabase)
 {
     /* Run the python script to generate parsable files for the new database */
