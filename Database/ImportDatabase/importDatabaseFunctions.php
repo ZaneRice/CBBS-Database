@@ -4,6 +4,7 @@ function importDatabase($database,$file)
 
 }
 
+function generateUpdateQuery($
 function importOldDatabase($database,$convert,$oldDatabase)
 {
     /* Run the python script to generate parsable files for the new database */

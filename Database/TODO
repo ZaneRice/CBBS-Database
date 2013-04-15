@@ -37,10 +37,10 @@
 	"TableName2"
 	...
 
-	Here is the pseudocode for importDatabase()
+	Here is the pseudocode for importDatabase($database, $file)
 	  {    
-		while(!EOF) //Can't remember off the top of my head
-                {           //what the actual way to check for EOF is
+		while(!file.eof()) //Can't remember off the top of my head
+                {                  //what the actual way to check for EOF is
 			tablename = readTableName();
 			columns = readColumns();
 			data = readData();
@@ -87,12 +87,12 @@
 		{
 		    for each element in data
 		    {
-			    query = generateQuery(tablename,columns,element);
+			    query = generateUpdateQuery(tablename,columns,element);
 			    mysqli_query(database,query);
 		    }
 		}
 
-	Here is the pseudocode for generateQuery(tablename,columns,element)
+	Here is the pseudocode for generateUpdateQuery(tablename,columns,element)
 
 		{
 		    //Genereate the SET part of the query
