@@ -1,7 +1,26 @@
 <?php
 function importDatabase($database,$file)
 {
+    $fp = fopen("$file",'r');
 
+    if(!$fp)
+    {
+	echo "Could not open file!";
+	exit;
+    }
+
+    while(!feof($fp))
+    {
+	$tablename = readTableName();
+	$columns = readColumns();
+	$data = readData();
+	updateDatabase($database, $tablename, $columns, $data);
+
+	// ignore "\n"
+	if( fgets($fp,1000) == "<br>") {
+	    echo "<br>Blank is here<br>";
+	}
+    }
 }
 
 function generateUpdateQuery($tableName, $columns, $rowData)
@@ -24,7 +43,7 @@ function importOldDatabase($database,$convert,$oldDatabase)
 {
     /* Run the python script to generate parsable files for the new database */
     exec("$convert < $oldDatabase");
-    
+
     /* 
      * The names of the tables for which data will be added.
      * These are used to create the file names for fopen()
