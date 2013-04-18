@@ -13,7 +13,7 @@ class Mentee
     {
     }
     
-    function removeMentee($database,$mentorEmail) 	
+    function removeMentee($database,$menteeEmail) 	
     {
     }
 
