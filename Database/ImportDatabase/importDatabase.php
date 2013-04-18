@@ -4,7 +4,7 @@
  * created by exportDatabase() and modify the data
  * in the database to match the CSV file.
  */
-require 'importDatabaseFunctions.php';
+require '../includes.php';
 
 /* Parse command line arguments */
 if(count($argv) != 7)

@@ -6,7 +6,7 @@
  * The file is formatted to be human-readable and will contain the
  * data from all tables listed in $tableNames
  */
-require 'excelFunctions.php';
+require '../includes.php'
 
 $database = mysqli_connect("","","","");
 

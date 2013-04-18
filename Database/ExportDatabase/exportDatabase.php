@@ -14,7 +14,7 @@
  * Both the $fileName and $tableNames variables are set based on the
  * values passed in from the command line.
  */
-require '../ExcelFunctions/excelFunctions.php';
+require '../includes.php';
 
 if(count($argv) < 7)
 {

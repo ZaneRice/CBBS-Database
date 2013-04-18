@@ -17,26 +17,10 @@ function importDatabase($database,$file)
 	updateDatabase($database, $tablename, $columns, $data);
 
 	// ignore "\n"
-	if( fgets($fp,1000) == "<br>") {
-	    echo "<br>Blank is here<br>";
-	}
+	//if( fgets($fp,1000) == "<br>") {
+	//    echo "<br>Blank is here<br>";
+	//}
     }
-}
-
-function generateUpdateQuery($tableName, $columns, $rowData)
-{
-    //Genereate the SET part of the query
-    $i = 0;
-    $set = "";
-
-    for($i = 0; $i < count($columns); $i=$i+1)
-    {
-	$set = $set . $columns[$i] . "=" . $rowData[$i];
-	if ($i+1 < count($columns))
-	    $set = $set . ",";
-    }
-
-    return "UPDATE " . $tableName . " SET " . $set . " WHERE " . $columns[0] . "=" . $rowData[0];
 }
 
 function importOldDatabase($database,$convert,$oldDatabase)

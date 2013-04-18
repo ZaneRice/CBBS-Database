@@ -21,7 +21,10 @@ function toExcel($database,$query,$label)
  * $tableNames array to a file named $filename using the database
  * connected to by $database 
  *
- * Mostly this function exists for convenience.
+ * Mostly this function exists for convenience when all data from 
+ * multiple tables needs to be written to a spreadsheet.
+ *
+ * For other puposes use toExcel()
  */
 function exportTablesToExcel($database, $tableNames,$filename)
 {

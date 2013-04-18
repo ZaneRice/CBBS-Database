@@ -95,7 +95,7 @@
 	Here is the pseudocode for generateUpdateQuery(tablename,columns,element)
 
 		{
-		    //Genereate the SET part of the query
+		    //Generate the SET part of the query
 		    set = ""
 		    for index i in columns
 		    {
@@ -107,6 +107,204 @@
 		    return "UPDATE " . tablename . " SET" . set . " WHERE " . column[0] . "=" . element[0];
 		}
 
+
+(2.1)
+	The prototypes for these functions are in 
+	Matching/matchFunctions.php
+	
+	Function to add a match between mentor and mentee
+	addMatch($database,$mentorEmail,$menteeEmail)
+	{
+	    $mentor = new Mentor;
+	    $mentee = new Mentee;
+
+	    menteeMatches = mentee->getMatchedWith($database,$menteeEmail);
+	    mentorMatches = mentor->getMatchedWith($database,$mentorEmail);
+
+	    /* 
+	    	Here is where you modify the strings
+	        returned to have the appropriate
+	        emails.
+		
+		Mentor should get Mentee's email 
+		Mentee should get Mentor's email.
+
+		If there is already a match in the
+		table, then make sure to put a comma
+		between the existing match and the 
+		new one.
+
+		DO NOT DELETE THE OLD MATCHES
+		 (that is what the removeMatch() function does)
+	    */
+
+	    //Once the strings are modified then just update the
+	    //database with the new strings
+	    mentee->setMatchedWith($database,$menteeEmail,modifiedMenteeMatches);
+	    mentor->setMatchedWith($database,$mentorEmail,modifiedMentorMatches);
+	}
+	
+	Function to remove a match between mentor and mentee
+	removeMatch($database,$mentorEmail,$menteeEmail)
+	{
+	    $mentor = new Mentor;
+	    $mentee = new Mentee;
+
+	    menteeMatches = mentee->getMatchedWith($database,$menteeEmail);
+	    mentorMatches = mentor->getMatchedWith($database,$mentorEmail);
+
+	    /* 
+	    	Here is where you modify menteeMatches and
+		mentorMatches
+
+		Remove Mentor's email from Mentee's MatchedWith
+		Remove Mentee's email from Mentor's MatchedWith
+
+		Make sure to remove any comma that may be left
+		behind when you remove the email
+			i.e.
+			If the original MatchedWith is: email1, email2
+			and you remove email2 then the resulting
+			MatchedWith should be "email1" NOT "email1,".
+	    */
+
+	    //Once the strings are modified then just update the
+	    //database with the new strings
+	    mentee->setMatchedWith($database,$menteeEmail,$modifiedMenteeMatches);
+	    mentor->setMatchedwith($database,$mentorEmail,$modifiedMentorMatches);
+	}
+
+(3.0)
+	The prototypes for all of these function are in
+	Mentor/Mentor.php
+
+	Function to get MatchedWith column data for Mentor
+	Returns the data in the Email-MatchedWith cell as a string
+	
+	getMatchedWith($database, $email)
+	{
+	    $result = SELECT MatchedWith FROM Mentor WHERE Email=$email
+
+	    //Convert the query result to a string like this:
+	    //	  $stringResult = "email1,email2,email3"
+
+	    return $stringResult;
+	}
+
+	/* 
+	   Sets MatchedWith for the Mentor represented by the email $email
+	   to $data
+
+	   $email and $data are strings
+	*/
+	setMatchedWith($database,$email,$data)
+	{
+	    //Need to create an array  $columns = [$email,"MatchedWith"]
+	    //Need to create an array  $rowData = [$email,$data]
+	    $query = generateUpdateQuery($tableName,$columns,$rowData);
+	    mysqli_query($database,$query);
+	}
+
+	/*
+	  Removes the Mentor represented by $mentorEmail from the Mentor table.
+	  Also removes all matches to this Mentor
+	*/
+	removeMentor($database,$mentorEmail)
+	{
+	    //Remove all matches to this Mentor from the Mentee table
+	    //Querying the database with something like the following
+	    //seems neccessary:
+	    //   SELECT Email FROM Mentee
+	    for each Email in Mentee
+	    {
+		removeMatch($database,$mentorEmail,$menteeEmail)
+	    }
+
+	    $query = generateDeleteQuery($tableName,$column,$mentorEmail);
+	    mysqli_query($database,$query);
+	}
+
+	/* 
+		Adds $values to $columns in the Mentor table
+		
+		$columns and $values are arrays which are of equal length
+		and whose elements are mapped 1-to-1 by index
+
+		i.e. $columns[N]=$values[N] must be a column and data
+		     pair which needs to be added to the Mentor table.
+		     (N is just any integer index)
+
+	*/
+	addMentor($database,$columns,$values)
+	{
+	    $query = generateInsertQuery($tableName,$columns,$values);
+	    mysqli_query($database,$query);
+	}
+
+(3.1)
+	The prototypes for all of these function are in
+	Mentee/Mentee.php
+	
+	*****
+	These should be almost identical to the functions in Mentor.php 
+	functions.
+
+	Just copy paste the Mentor functions after they are written and
+	edit them.
+	*****
+	
+	Function to get MatchedWith column data for Mentor
+	getMatchedWith();
+
+	Function to set MatchedWith column data for Mentor
+	setMatchedWith();
+
+	Function to remove a Mentee from the Mentee table
+	removeMentee($database,$menteeEmail);
+
+	Function to add a Mentee to the Mentee table
+	addMentee($database,$columns,$data);
+
+(4.0)
+	Put this in Query/queryFunctions.php
+
+	generateInsertQuery($tableName,$columns,$values)
+	{
+	    //generate this query from the string $tableName,
+	    //the array of strings $columns, and the array of strings $values
+	    INSERT INTO table_name (column1, column2, column3,...)
+	    VALUES (value1, value2, value3,...) 
+	}
+
+
+	/* Empty string "" for $column or $value means delete all rows */
+	generateDeleteQuery($tableName,$column,$value)
+	{
+	    if(length($column) > 0 && length($value) > 0)
+		return "DELETE FROM $tableName WHERE $column=$value";
+	    else
+		return "DELETE FROM $tableName";
+	}
+
+(5.0)
+	modify importDatabase() to add any new row encountered to the
+	database
+	
+	Probably this just means check if column[0]value[0] for each
+	row exists in the table.
+
+	If it does, update row
+	If it does not, add row
+
+	add a clear() function to Mentor and Mentee
+	clear($database)
+	{
+	    $query = generateDeleteQuery("Mentor","","");
+	    mysqli_query($database,$query);
+	}
+	
+	Should be as easy as running "DELETE FROM Mentor"
+	
 ---------------STUFF THAT'S DONE---------------------------
 (DONE) Have convert.py output a file named TableNames
     which contains the name of a table with a corresponding
@@ -215,3 +413,6 @@
 		Activities
 
 		Change address columns to be prefixed by "Permanent"
+
+(DONE)
+	Add MatchedWith column to both the Mentor and the Mentee tables
