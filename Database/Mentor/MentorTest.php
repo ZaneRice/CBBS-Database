@@ -11,21 +11,44 @@
  */
 require '../includes.php';
 
-$database = mysqli_connect("","","","");
-
-// Check connection
-if (mysqli_connect_errno($database))
+function testRemoveMentor()
 {
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-    exit();
+    $database = mysqli_connect("oss-ci.cs.clemson.edu","cpsc472","myDB4dmin","cpsc472");
+    //$database = mysqli_connect("","","","");
+
+    // Check connection
+    if (mysqli_connect_errno($database))
+    {
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	exit();
+    }
+
+    //Insert Mentee
+    $query = generateInsertQuery("Mentee", 
+	Array("Email","MatchedWith"),
+	Array("TempMentee@nothing.com","TempMentor@nothing.com"));
+    mysqli_query($database,$query);
+
+    //Insert Mentor
+    $query = generateInsertQuery("Mentor",
+	Array("Email","MatchedWith"),
+	Array("TempMentor@nothing.com","TempMentee@nothing.com"));
+    mysqli_query($database,$query);
+
+    //Call Mentor->removeMentor()
+    $mentor = new Mentor;
+    $mentor->removeMentor($database, "TempMentor@nothing.com");
+
+    mysqli_close($database);
 }
 
-$query = generateInsertQuery("Mentee",["Email","MatchedWith"],["TempMentee@nothing.com","TempMentor@nothing.com"]);
-mysqli_query($database,$query);
-$query = generateInsertQuery("Mentor",["Email","MatchedWith"],["TempMentor@nothing.com","TempMentee@nothing.com"]);
+/* 
+ * All the test are here, just comment out the ones that
+ * do not need to be run
+ * Please do NOT test clear(), I feel like some of the other
+ * groups may have data in the tables that they are using for
+ * their own debugging right now. So don't alter it.
+ */
+testRemoveMentor();
 
-mentor = new Mentor;
-mentor->removeMentor($database, "TempMentor@nothing.com");
-
-mysqli_close($database);
 ?>

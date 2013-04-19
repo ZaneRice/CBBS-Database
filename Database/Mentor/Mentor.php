@@ -13,14 +13,12 @@ class Mentor
 	while($row = mysqli_fetch_array($tableQuery))
 	{
 	    //Remove this Mentor from the current Mentee's MathcedWith
-	    //removeMatch($database,$mentorEmail,$row[0]);
-	    print "Mentee Emails:\n";
-	    print $row[0] . "\n";
+	    removeMatch($database,$mentorEmail,$row[0]);
 	}
 
-	$query = generateDeleteQuery($tableName,"Email",$mentorEmail);
-	print "Delete Query:\n" . $query . "\n";
-	//mysqli_query($database,$query);
+	//Remove this mentor from the Mentor table
+	$query = generateDeleteQuery("Mentor","Email",$mentorEmail);
+	mysqli_query($database,$query);
     }
 
     function setMatchedWith($database,$email,$data) 
