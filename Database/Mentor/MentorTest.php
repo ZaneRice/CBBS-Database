@@ -13,8 +13,7 @@ require '../includes.php';
 
 function testRemoveMentor()
 {
-    $database = mysqli_connect("oss-ci.cs.clemson.edu","cpsc472","myDB4dmin","cpsc472");
-    //$database = mysqli_connect("","","","");
+    $database = mysqli_connect("","","","");
 
     // Check connection
     if (mysqli_connect_errno($database))
