@@ -19,6 +19,7 @@ class Mentee
 
     function clear($database)
     {
+	mysqli_query($database,"DELETE FROM Mentee");
     }
 }
 ?>

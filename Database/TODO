@@ -265,27 +265,6 @@
 	Function to add a Mentee to the Mentee table
 	addMentee($database,$columns,$data);
 
-(4.0)
-	Put this in Query/queryFunctions.php
-
-	generateInsertQuery($tableName,$columns,$values)
-	{
-	    //generate this query from the string $tableName,
-	    //the array of strings $columns, and the array of strings $values
-	    INSERT INTO table_name (column1, column2, column3,...)
-	    VALUES (value1, value2, value3,...) 
-	}
-
-
-	/* Empty string "" for $column or $value means delete all rows */
-	generateDeleteQuery($tableName,$column,$value)
-	{
-	    if(length($column) > 0 && length($value) > 0)
-		return "DELETE FROM $tableName WHERE $column=$value";
-	    else
-		return "DELETE FROM $tableName";
-	}
-
 (5.0)
 	modify importDatabase() to add any new row encountered to the
 	database
@@ -304,6 +283,9 @@
 	}
 	
 	Should be as easy as running "DELETE FROM Mentor"
+
+(6.0)
+	Fix "YES", "NO" to "TRUE","FALSE" bug in importDatabase()
 	
 ---------------STUFF THAT'S DONE---------------------------
 (DONE) Have convert.py output a file named TableNames
@@ -416,3 +398,24 @@
 
 (DONE)
 	Add MatchedWith column to both the Mentor and the Mentee tables
+
+(DONE)
+	Put this in Query/queryFunctions.php
+
+	generateInsertQuery($tableName,$columns,$values)
+	{
+	    //generate this query from the string $tableName,
+	    //the array of strings $columns, and the array of strings $values
+	    INSERT INTO table_name (column1, column2, column3,...)
+	    VALUES (value1, value2, value3,...) 
+	}
+
+
+	/* Empty string "" for $column or $value means delete all rows */
+	generateDeleteQuery($tableName,$column,$value)
+	{
+	    if(length($column) > 0 && length($value) > 0)
+		return "DELETE FROM $tableName WHERE $column=$value";
+	    else
+		return "DELETE FROM $tableName";
+	}

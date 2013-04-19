@@ -2,8 +2,19 @@ Directory:
 	Description of contents of that directory
 
 .:
+	includes.php -- A file where all things which may need to be included
+			should be placed in a require statement.
+			This makes it easy for other Teams to access all of
+			the functions written by the Database team.
+			It also helps the Database team in debugging their
+			own code, since it avoids circular and redundant requires.
+			Redundant requires are a problem since "require" suffers
+			from a fatal error because of them, causing the entire
+			script to halt.
+
 	TODO -- A list of things to do. Make sure to read the top comment
 		to avoid confusing everyone.
+
 	*.sql -- backups of the database
 
 ExcelFunctions:
@@ -41,7 +52,8 @@ ExportDatabase:
 	with the data given on the command line.
 
 ImportDatabase:
-	This directory contains the file importDatabase.php. Once given
+	importOldDatabase.php:
+	This directory contains the file importOldDatabase.php. Once given
 	the login information for the database, the path to convert.py
 	(also located in ImportDatabase), and the path to the old
 	database saved as a .csv file, this script will convert the old
@@ -50,17 +62,43 @@ ImportDatabase:
 	the new database. 
 
  	IMPORTANT:
-  		importDatabase.php requires that the tables for which the data
+  		importOldDatabase.php requires that the tables for which the data
   		is going to be added to already exists in the database.
   		Obviously there will not be any data in the tables, but
-  		the tables with the proper column names and column order
-  		must exist.
+  		the tables with the proper column names must exist.
  
   		The easiest way to accomplish this is to load one of the
  		saved .sql files of the database. You should probably
-  		load the most recent one. The older .sql files may not
-  		be compatible with the convert.py scripts output and
-  		therefore are not compatible with importDatabase.php.
+  		load the most recent one. 
+
+	importDatabase.php:
+	Very similar to importOldDatabase.php except it does not require a
+	python script and works on files of the format created by toExcel()
+	found in ExcelFunctions/excelFunctions.php.
+
+	importDatabaseFunctions.php:
+	This is the php file which has the implementations for importing the old
+	and the new databases from .csv files.
+
+Matching:
+	matchingFunctions.php:
+		Contains functions for adding and removing matches between mentors
+		and mentees.
+	
+Mentor:
+	Mentor.php
+		Contains a class "Mentor" which contins functions for altering the
+		Mentor table and for getting data out of the Mentor table.
+Mentee:
+	Mentee.php
+		Contains a class "Mentee" which contins functions for altering the
+		Mentee table and for getting data out of the Mentee table.
+Query:
+	queryFunctions.php:
+		Contains functions for generating common queries to the database.
+		INSERT,DELETE,UPDATE queries are currently supported to a
+		reasonable degree. Many more functions or more complex functions
+		may be needed in the future.
 
 Conventions:
 	(1) When naming columns in the database :
