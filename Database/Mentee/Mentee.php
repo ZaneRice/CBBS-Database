@@ -11,6 +11,8 @@ class Mentee
     
     function addMentee($database,$columns,$values)
     {
+	$query = generateInsertQuery($tableName,$columns,$values);
+	mysqli_query($database,$query);
     }
     
     function removeMentee($database,$menteeEmail)	
