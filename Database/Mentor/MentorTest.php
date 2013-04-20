@@ -11,7 +11,8 @@
  */
 require '../includes.php';
 
-function testRemoveMentor()
+
+function connect()
 {
     $database = mysqli_connect("","","","");
 
@@ -21,6 +22,13 @@ function testRemoveMentor()
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	exit();
     }
+    else
+	return $database;
+}
+
+function testRemoveMentor()
+{
+    $database = connect();
 
     //Insert Mentee
     $query = generateInsertQuery("Mentee", 
@@ -41,6 +49,15 @@ function testRemoveMentor()
     mysqli_close($database);
 }
 
+function testAddMentor()
+{
+    $database = connect();
+    $mentor = new Mentor;
+    $mentor->addMentor($database,
+	               ["Email","MatchedWith"],
+		       ["TempMentor@nothing.com","TempMentee@nothing.com"]);
+}
+
 /* 
  * All the test are here, just comment out the ones that
  * do not need to be run
@@ -48,6 +65,7 @@ function testRemoveMentor()
  * groups may have data in the tables that they are using for
  * their own debugging right now. So don't alter it.
  */
-testRemoveMentor();
+testAddMentor();
+//testRemoveMentor(); //Also tests addMentor and addMentee
 
 ?>
