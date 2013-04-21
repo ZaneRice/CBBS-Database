@@ -27,10 +27,13 @@ function importDatabase($database,$file)
 
 function readTableName($file)
 {
+    $row = explode(",",trim(fgets($file)));
+    return $row[0];
 }
 
 function readColumns($file)
 {
+    return explode(",",trim(fgets($file)));
 }
 
 function readData($file)
@@ -39,11 +42,15 @@ function readData($file)
     
     while($data = fgets($file))
     {
-	if($data == "" || $data == "\n")
-	    break;
 	
 	$data = trim($data);
 	$row = explode(',',$data);
+	
+	//Blank Primary Key Means STOP
+	//var_export($row);
+	if($row[0] == "")
+	    break;
+
 	$newRow = Array();
 
 	/* 
@@ -80,6 +87,19 @@ function readData($file)
 		$row[$i] = substr($row[$i],1,strlen($row[$i])-2);
 	    }
 
+	    //Convert back to boolean from "yes", "no" output format
+	    if(    strtolower($row[$i]) == "yes" 
+		|| strtolower($row[$i]) == "true")
+	    {
+		$row[$i] = "1";
+	    }
+	    else if (    strtolower($row[$i]) == "no" 
+		      || strtolower($row[$i]) == "false")
+	    {
+		$row[$i] = "0";
+	    }
+
+
 	    $newRow[] = "'" . $row[$i] . "'";
 	    $i = $j;
 	}
@@ -96,8 +116,33 @@ function updateDatabase($database,$tablename,$columns,$data)
 
     for($i = 0; $i < count($data); $i++)
     {
-	$query = generateUpdateQuery($tablename,$columns,$data[$i]);
-	print "\n" . $query . "\n";
+	$value = $data[$i][0];
+	$len = strlen($value);
+	if( $len <= 1 || $value[0] != "'" || $value[$len-1] != "'" )
+	    $query = "SELECT * FROM $tablename WHERE $columns[0]='$value'";
+	else
+	    $query = "SELECT * FROM $tablename WHERE $columns[0]=$value";
+	$queryResult = mysqli_fetch_array(mysqli_query($database,$query));
+	    
+	//$queryResult = mysqli_query($database,$query);
+
+	if($queryResult != NULL) //If row already exists update it
+	{
+	    //DO NOT UPDATE A ROW TO HAVE A BLANK EMAIL
+	    if($data[$i][0] != "''" && $data[$i][0] != "")
+		$query = generateUpdateQuery($tablename,$columns,$data[$i]);
+	    else
+		$query = "";
+	}
+	else //If row does not already exist create it
+	{
+	    //DO NOT ADD A ROW WITH A BLANK EMAIL
+	    if($data[$i][0] != "''" && $data[$i][0] != "")
+		$query = generateInsertQuery($tablename,$columns,$data[$i]);
+	    else
+		$query = "";
+	}
+	
 	mysqli_query($database,$query);
     }
 }
