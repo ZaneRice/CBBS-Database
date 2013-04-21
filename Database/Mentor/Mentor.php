@@ -3,12 +3,12 @@ class Mentor
 {
     function getMatchedWith($database, $email)
     {
-	$result = "SELECT MatchedWith FROM Mentor WHERE Email=$email";
+	$result = "SELECT MatchedWith FROM Mentor WHERE Email='$email'";
 
-	//where MatchedWith is the name of a column in the database
+	$queryResult = mysqli_query($database,$result);
+	$row = mysqli_fetch_array($queryResult);
 
-	//Then we convert the query result to a string like this:
-	$stringResult = (string)$result;
+	$stringResult = (string)$row[0];
 
 	return $stringResult;
     }
