@@ -99,11 +99,11 @@ function queryColumnsExcelString($database, $query)
 
 	if ($columns === "")
 	{
-	    $columns = "\"$column\""; 
+	    $columns = "$column"; 
 	}
 	else
 	{
-	    $columns = $columns . ",\"$column\""; 
+	    $columns = $columns . ",$column"; 
 	}
     }
 
@@ -159,11 +159,25 @@ function queryRowsExcelString($database, $query)
 
 	    if($i === 0) //Don't add a comma
 	    {
-		$values = $values . "\"" . $row[$i] . "\"";
+		if(strpos($row[$i],","))
+		{
+		    $values = $values . "\"" . $row[$i] . "\"";
+		}
+		else
+		{
+		    $values = $values . $row[$i];
+		}
 	    }
 	    else //Add a comma
 	    {
-		$values = $values . ",\"" . $row[$i] . "\"";
+		if(strpos($row[$i],","))
+		{
+		    $values = $values . ",\"" . $row[$i] . "\"";
+		}
+		else
+		{
+		    $values = $values . "," . $row[$i];
+		}
 	    }
 	}
     }while($row = mysqli_fetch_array($tableQuery));

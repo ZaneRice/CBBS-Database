@@ -1,16 +1,16 @@
-Mentor,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Mentor"
 Email,FirstName,MiddleName,LastName,PreferredName,Gender,WorkPhone,WorkTelephoneExtention,MobilePhone,PermanentStreetAddress,PermanentCity,PermanentState,PermanentCountry,PermanentZipCode,IsMentor,IsMentee,IsAdmin,IsSponsor,Major,Minor,Concentrations,GraduationYear,ExtendedDegree,CurrentIndustry,OtherIndustryExpertise,YearsInCurrentPosition,YearsInCompany,CompanyName,Position,HobbiesAndInterests,MBTI,Activities,IsAvailableToBeMatched,Background,MatchedWith,Status
-steve@clemson.edu,Dennis,Elliott,Stevenson,,Male,8646565880,,8646565880,123 Evergreen Drive,Clemson,South Carolina, ,29631,YES,NO,NO,NO,,,,0,,,,30,32,College of Business and Behavioral Scien,Associate Professor,,,,YES,Art,,unmatched
+steve@clemson.edu,Dennis,Elliott,Stevenson,,Male,8646565880,,8646565880,123 Evergreen Drive,Clemson,South Carolina, ,29631,NO,NO,NO,NO,,,,0,,,,30,32,College of Business and Behavioral Scien,Associate Professor,,,,NO,Art,,unmatched
 TempMentor@nothing.com,,,,,Female,,,,,,,,,NO,NO,NO,NO,,,,0,,,,0,0,,,,,,NO,,"TempMentee@nothing.com,TempMentee2@nothing.com",unmatched
-Test11@clemson.edu,Harris,Ted,Hopscotch,Ted,Male,,,,,,,,,YES,NO,NO,YES,,,,0,,,,0,0,,,,,,YES,,Tim Timmingsworth,matched
-Test12@g.clemson.edu,Fred,m.,Kinsey,,Male,,,,,,,,,YES,NO,YES,NO,,,,0,,,,0,0,,,,,,NO,,,inactive
-Test13@clemson.edu,Jeremy,Ken,Jenkins,Ken,Male,,,,,,,,,YES,NO,NO,NO,,,,0,,,,0,0,,,,,,YES,,,inactive
-Test14@clemson.edu,Donna,Martha,Smith,,Female,,,,,,,,,YES,NO,NO,YES,,,,0,,,,0,0,,,,,,NO,,"John Doe, Captain Falcon",matched
-Test15@clemson.edu,Garret,,vanderbelt,Henry,Male,,,,,,,,,YES,NO,NO,NO,,,,0,,,,0,0,,,,,,YES,,,inactive
-Test16@clemson.edu,Test,,Record,Jack,Not Disclosed,,,,,,,,,YES,NO,NO,YES,,,,0,,,,0,0,,,,,,NO,,max power,matched
-Test17@g.clemson.edu,Thomas,Greene,Clemson,,Male,,,,,,,,,YES,NO,YES,YES,,,,0,,,,0,0,,,,,,YES,,,inactive
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-Mentee,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Test11@clemson.edu,Harris,Ted,Hopscotch,Ted,Male,,,,,,,,,NO,NO,NO,NO,,,,0,,,,0,0,,,,,,NO,,Tim Timmingsworth,matched
+Test12@g.clemson.edu,Fred,m.,Kinsey,,Male,,,,,,,,,NO,NO,NO,NO,,,,0,,,,0,0,,,,,,NO,,,inactive
+Test13@clemson.edu,Jeremy,Ken,Jenkins,Ken,Male,,,,,,,,,NO,NO,NO,NO,,,,0,,,,0,0,,,,,,NO,,,inactive
+Test14@clemson.edu,Donna,Martha,Smith,,Female,,,,,,,,,NO,NO,NO,NO,,,,0,,,,0,0,,,,,,NO,,"John Doe, Captain Falcon",matched
+Test15@clemson.edu,Garret,,vanderbelt,Henry,Male,,,,,,,,,NO,NO,NO,NO,,,,0,,,,0,0,,,,,,NO,,,inactive
+Test16@clemson.edu,Test,,Record,Jack,Not Disclosed,,,,,,,,,NO,NO,NO,NO,,,,0,,,,0,0,,,,,,NO,,max power,matched
+Test17@g.clemson.edu,Thomas,Greene,Clemson,,Male,,,,,,,,,NO,NO,NO,NO,,,,0,,,,0,0,,,,,,NO,,,inactive
+
+"Mentee"
 Email,University,GraduationYear,Major,ExtendedDegree,Minor,Concentration,FirstName,MiddleName,LastName,PreferredName,Gender,CUID,MobilePhone,CurrentStreetAddress,CurrentCity,CurrentState,CurrentCountry,CurrentZipCode,PermanentStreetAddress,PermanentCity,PermanentState,PermanentCountry,PermanentZipcode,IndustryOfInterest,HobbiesAndInterests,MBTI,Activities,IsMentor,IsMentee,IsAdmin,IsAvailableToBeMatched,Background,MatchedWith,Status,MatchDate
 exampleMentee@clemson.edu, , , ,,,,FirstExample,MiddleExample,LastExample,,Male,0,5555555555,Example Street Address,Example City,Example State, ,55555,,,,,,,,,,NO,YES,NO,YES,Example Background,,unmatched,0000-00-00
 rpkelly@clemson.edu,,,,,,,Richard,Patrick,Kelly,,Male,0,,,,,,,,,,,,,,,,NO,YES,NO,NO,,,unmatched,0000-00-00
@@ -25,3 +25,4 @@ Test6@clemson.edu,,,,,,,Amy,,Livingston,,Female,987654321,,,,,,,,,,,,,,,,NO,YES,
 Test7@g.clemson.edu,,,,,,,Captain,,Falcon,Captain,Male,111111111,,,,,,,,,,,,,,,,NO,YES,NO,NO,,Donna Smith,matched,2013-03-23
 Test8@clemson.edu,,,,,,,Tim,Timmy,Timmingsworth,,Non Disclosed,847329106,,,,,,,,,,,,,,,,NO,YES,NO,NO,,Harris Hopscotch,matched,2013-12-20
 Test9@clemson.edu,,,,,,,Leslie,,Roberts,Janet,Female,897342654,,,,,,,,,,,,,,,,NO,YES,NO,YES,,,inactive,0000-00-00
+
