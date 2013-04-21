@@ -68,6 +68,16 @@ function testGetMatchedWith()
     mysqli_close($database);
 }
 
+function testSetMatchedWith()
+{
+    testAddMentor();
+    $database = connect();
+    $mentor   = new Mentor;
+    print "\n" . $mentor->setMatchedWith($database,"TempMentor@nothing.com","nope@nothing.com") . "\n";
+    print "\n" . $mentor->getMatchedWith($database,"TempMentor@nothing.com") . "\n";
+    mysqli_close($database);
+}
+
 /* 
  * All the test are here, just comment out the ones that
  * do not need to be run
@@ -78,5 +88,6 @@ function testGetMatchedWith()
 //testAddMentor();
 testRemoveMentor(); //Also tests addMentor and addMentee
 testGetMatchedWith();
+testSetMatchedWith();
 
 ?>
