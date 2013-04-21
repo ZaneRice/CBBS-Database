@@ -3,23 +3,27 @@ class Mentee
 {
     function getMatchedWith($database, $email)
     {
-	$result = "SELECT MatchedWith FROM Mentee WHERE Email=$email";
+	$result = "SELECT MatchedWith FROM Mentee WHERE Email='$email'";
 
-	//where MatchedWith is the name of a column in the database
+	$queryResult = mysqli_query($database,$result);
+	$row = mysqli_fetch_array($queryResult);
 
-	//Then we convert the query result to a string like this:
-	$stringResult = (string)$result;
+	$stringResult = (string)$row[0];
 
 	return $stringResult;
     }
     
     function setMatchedWith($database,$email,$data) 
     {
+	$columns = array("Email","MatchedWith");
+	$rowData = array($email,$data);
+	$query = generateUpdateQuery("Mentee",$columns,$rowData);
+	mysqli_query($database,$query);
     }
     
     function addMentee($database,$columns,$values)
     {
-	$query = generateInsertQuery($tableName,$columns,$values);
+	$query = generateInsertQuery("Mentee",$columns,$values);
 	mysqli_query($database,$query);
     }
     

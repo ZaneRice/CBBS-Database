@@ -31,9 +31,9 @@ class Mentor
 
     function setMatchedWith($database,$email,$data) 
     {
-	$columns = array($email,"MatchedWith");
+	$columns = array("Email","MatchedWith");
 	$rowData = array($email,$data);
-	$query = generateUpdateQuery($tableName,$columns,$rowData);
+	$query = generateUpdateQuery("Mentor",$columns,$rowData);
 	mysqli_query($database,$query);
     }
     

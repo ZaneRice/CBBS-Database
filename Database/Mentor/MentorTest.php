@@ -30,17 +30,18 @@ function testRemoveMentor()
 {
     $database = connect();
 
+    $mentor = new Mentor;
+    $mentee = new Mentee;
+
     //Insert Mentee
-    $query = generateInsertQuery("Mentee", 
+    $query = $mentee->addMentee($database,
 	Array("Email","MatchedWith"),
 	Array("TempMentee@nothing.com","TempMentor@nothing.com"));
-    mysqli_query($database,$query);
 
     //Insert Mentor
-    $query = generateInsertQuery("Mentor",
+    $query = $mentor->addMentor($database,
 	Array("Email","MatchedWith"),
 	Array("TempMentor@nothing.com","TempMentee@nothing.com"));
-    mysqli_query($database,$query);
 
     //Call Mentor->removeMentor()
     $mentor = new Mentor;
@@ -54,8 +55,8 @@ function testAddMentor()
     $database = connect();
     $mentor = new Mentor;
     $mentor->addMentor($database,
-	               Array("Email","MatchedWith"),
-		       Array("TempMentor@nothing.com","TempMentee@nothing.com,TempMentee@nothing.com"));
+	Array("Email","MatchedWith"),
+	Array("TempMentor@nothing.com","TempMentee@nothing.com"));
     mysqli_close($database);
 }
 
@@ -64,7 +65,9 @@ function testGetMatchedWith()
     testAddMentor();
     $database = connect();
     $mentor   = new Mentor;
-    print "\n" . $mentor->getMatchedWith($database,"TempMentor@nothing.com") . "\n";
+    print "\nShould be 'TempMentee@nothing.com'\n";
+    print $mentor->getMatchedWith($database,"TempMentor@nothing.com");
+    print "\n";
     mysqli_close($database);
 }
 
@@ -73,8 +76,12 @@ function testSetMatchedWith()
     testAddMentor();
     $database = connect();
     $mentor   = new Mentor;
-    print "\n" . $mentor->setMatchedWith($database,"TempMentor@nothing.com","nope@nothing.com") . "\n";
-    print "\n" . $mentor->getMatchedWith($database,"TempMentor@nothing.com") . "\n";
+    $mentor->setMatchedWith($database,
+	"TempMentor@nothing.com",
+	"nope@nothing.com,nope2@nothing.com");
+    print "\nShould be 'nope@nothing.com,nope2@nothing.com'\n";
+    print $mentor->getMatchedWith($database, "TempMentor@nothing.com");
+    print "\n";
     mysqli_close($database);
 }
 
@@ -85,9 +92,9 @@ function testSetMatchedWith()
  * groups may have data in the tables that they are using for
  * their own debugging right now. So don't alter it.
  */
-//testAddMentor();
-testRemoveMentor(); //Also tests addMentor and addMentee
+testRemoveMentor(); 
+testAddMentor();
 testGetMatchedWith();
 testSetMatchedWith();
-
+testRemoveMentor(); 
 ?>
