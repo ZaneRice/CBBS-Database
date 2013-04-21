@@ -34,26 +34,34 @@ function readData($file)
 	if($data == "" || $data == "\n")
 	    break;
 	
-	$row = explode(",",$data);
+	$row = explode('"',$data);
+	$newRow = Array();
 
-	for($i=0; $i < count($row); $i++)
+	/* 
+	 * Start at $i=1 because the first element of row is an
+	 * empty string artifact of exploding along double-quotes
+	 * which needs to be ignored.
+	 *
+	 * Stop at count($row-1) because last element is the newline
+	 * character which also needs to be ignored.
+	 */
+	for($i=1; $i < count($row)-1; $i++)
 	{
-	    if(strlen($row[$i]) > 2)
-		$row[$i] = "'" . substr(1,strlen($row[$i])-2) . "'";
+	    if($row[$i] == ",")
+	    {
+		continue;
+	    }
 	    else
-		$row[$i] = "''";
+	    {
+		$newRow[] = "'" . $row[$i] . "'";
+	    }
 	}
-
-	$arr[] = $data;
+	
+	$arr[] = $newRow;
     }
     
     return $arr;
 }
-
-//$file = fopen("../ExportDatabase/databaseTables.csv","r");
-//fgets($file);
-//fgets($file);
-//var_export(readData($file));
 
 function updateDatabase($database,$tablename,$columns,$data)
 {
