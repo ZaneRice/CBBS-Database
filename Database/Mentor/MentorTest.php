@@ -14,7 +14,8 @@ require '../includes.php';
 
 function connect()
 {
-    $database = mysqli_connect("","","","");
+    $database = mysqli_connect("oss-ci.cs.clemson.edu","cpsc472","myDB4dmin","cpsc472");
+    //$database = mysqli_connect("","","","");
 
     // Check connection
     if (mysqli_connect_errno($database))
@@ -54,8 +55,8 @@ function testAddMentor()
     $database = connect();
     $mentor = new Mentor;
     $mentor->addMentor($database,
-	               ["Email","MatchedWith"],
-		       ["TempMentor@nothing.com","TempMentee@nothing.com"]);
+	               Array("Email","MatchedWith"),
+		       Array("TempMentor@nothing.com","TempMentee@nothing.com"));
     mysqli_close($database);
 }
 

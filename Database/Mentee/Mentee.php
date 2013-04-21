@@ -3,7 +3,7 @@ class Mentee
 {
     function getMatchedWith($database, $email)
     {
-	$result = SELECT MatchedWith FROM Mentee WHERE Email=$email;
+	$result = "SELECT MatchedWith FROM Mentee WHERE Email=$email";
 
 	//where MatchedWith is the name of a column in the database
 

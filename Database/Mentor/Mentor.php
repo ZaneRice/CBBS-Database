@@ -35,7 +35,7 @@ class Mentor
     
     function addMentor($database,$columns,$values)
     {
-	$query = generateInsertQuery($tableName,$columns,$values);
+	$query = generateInsertQuery("Mentor",$columns,$values);
 	mysqli_query($database,$query);
     }
 
