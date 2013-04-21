@@ -13,12 +13,21 @@ function generateUpdateQuery($tableName, $columns, $rowData)
 
     for($i = 0; $i < count($columns); $i=$i+1)
     {
-	$set = $set . $columns[$i] . "='" . $rowData[$i] . "'";
+	//Check if the data value has been put inside single-quotes and add
+	//them if needed
+	if($rowData[$i][0] != "'")
+	    $set = $set . $columns[$i] . "='" . $rowData[$i] . "'";
+	else
+	    $set = $set . $columns[$i] . "=" . $rowData[$i];
+
 	if ($i+1 < count($columns))
 	    $set = $set . ",";
     }
 
-    return "UPDATE " . $tableName . " SET " . $set . " WHERE " . $columns[0] . "='" . $rowData[0] . "'";
+    if($rowData[0][0] != "'")
+	return "UPDATE " . $tableName . " SET " . $set . " WHERE " . $columns[0] . "='" . $rowData[0] . "'";
+    else
+	return "UPDATE " . $tableName . " SET " . $set . " WHERE " . $columns[0] . "=" . $rowData[0];
 }
 
 /*

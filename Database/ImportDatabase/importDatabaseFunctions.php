@@ -11,9 +11,9 @@ function importDatabase($database,$file)
 
     while(!feof($fp))
     {
-	$tablename = readTableName();
-	$columns = readColumns();
-	$data = readData();
+	$tablename = readTableName($fp);
+	$columns = readColumns($fp);
+	$data = readData($fp);
 	updateDatabase($database, $tablename, $columns, $data);
 
 	// ignore "\n"
@@ -25,6 +25,14 @@ function importDatabase($database,$file)
     fclose($fp);
 }
 
+function readTableName($file)
+{
+}
+
+function readColumns($file)
+{
+}
+
 function readData($file)
 {
     $arr = array();
@@ -34,7 +42,8 @@ function readData($file)
 	if($data == "" || $data == "\n")
 	    break;
 	
-	$row = explode('"',$data);
+	$data = trim($data);
+	$row = explode(',',$data);
 	$newRow = Array();
 
 	/* 
@@ -45,16 +54,34 @@ function readData($file)
 	 * Stop at count($row-1) because last element is the newline
 	 * character which also needs to be ignored.
 	 */
-	for($i=1; $i < count($row)-1; $i++)
+	for($i=0; $i < count($row); $i++)
 	{
-	    if($row[$i] == ",")
+	    /*
+	     * This is obscure, but what it does is combine
+	     * cell elements that have commas within them
+	     * but are surrounded by double quotes when you
+	     * save the .csv file from the spreadsheet
+	     * interface.
+	     *
+	     * Things like "email1,email2" get seperated
+	     * into ["email1,email2"], so we need to 
+	     * combine them into one element
+	     * (single-quotes used here, but not actually
+	     * present in strings) ['"email1,email2"']
+	     */
+	    $j = $i;
+	    if(strlen($row[$i]) > 0 && $row[$i][0] == '"')
 	    {
-		continue;
+		while($row[$i][strlen($row[$i])-1] != '"')
+		{
+		    $j++;
+		    $row[$i] = $row[$i] . "," . $row[$j];
+		}
+		$row[$i] = substr($row[$i],1,strlen($row[$i])-2);
 	    }
-	    else
-	    {
-		$newRow[] = "'" . $row[$i] . "'";
-	    }
+
+	    $newRow[] = "'" . $row[$i] . "'";
+	    $i = $j;
 	}
 	
 	$arr[] = $newRow;
@@ -69,8 +96,8 @@ function updateDatabase($database,$tablename,$columns,$data)
 
     for($i = 0; $i < count($data); $i++)
     {
-	$element = $data[$i];
-	$query = generateUpdateQuery($tablename,$columns,$element);
+	$query = generateUpdateQuery($tablename,$columns,$data[$i]);
+	print "\n" . $query . "\n";
 	mysqli_query($database,$query);
     }
 }
