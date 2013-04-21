@@ -3,8 +3,16 @@ class Mentor
 {
     function getMatchedWith($database, $email)
     {
+	$result = "SELECT MatchedWith FROM Mentor WHERE Email=$email";
+
+	//where MatchedWith is the name of a column in the database
+
+	//Then we convert the query result to a string like this:
+	$stringResult = (string)$result;
+
+	return $stringResult;
     }
-    
+
     function removeMentor($database,$mentorEmail) 	
     {
 	$tableQuery = mysqli_query($database,"SELECT Email FROM Mentee");

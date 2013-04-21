@@ -56,6 +56,16 @@ function testAddMentor()
     $mentor->addMentor($database,
 	               ["Email","MatchedWith"],
 		       ["TempMentor@nothing.com","TempMentee@nothing.com"]);
+    mysqli_close($database);
+}
+
+function testGetMatchedWith()
+{
+    testAddMentor();
+    $database = connect();
+    $mentor   = new Mentor;
+    print "\n" . $mentor->getMatchedWith($database,"TempMentor@nothing.com") . "\n";
+    mysqli_close($database);
 }
 
 /* 
@@ -65,7 +75,8 @@ function testAddMentor()
  * groups may have data in the tables that they are using for
  * their own debugging right now. So don't alter it.
  */
-testAddMentor();
+//testAddMentor();
 //testRemoveMentor(); //Also tests addMentor and addMentee
+testGetMatchedWith();
 
 ?>

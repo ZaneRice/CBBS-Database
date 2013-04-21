@@ -3,6 +3,14 @@ class Mentee
 {
     function getMatchedWith($database, $email)
     {
+	$result = SELECT MatchedWith FROM Mentee WHERE Email=$email;
+
+	//where MatchedWith is the name of a column in the database
+
+	//Then we convert the query result to a string like this:
+	$stringResult = (string)$result;
+
+	return $stringResult;
     }
     
     function setMatchedWith($database,$email,$data) 

@@ -23,6 +23,18 @@ function importDatabase($database,$file)
     }
 }
 
+function updateDatabase($database,$tablename,$columns,$data)
+{
+    $i = 0;
+
+    for($i = 0; $i < count($data); $i++)
+    {
+	$element = $data[$i];
+	$query = generateUpdateQuery($tablename,$columns,$element);
+	mysqli_query($database,$query);
+    }
+}
+
 function importOldDatabase($database,$convert,$oldDatabase)
 {
     /* Run the python script to generate parsable files for the new database */
