@@ -21,7 +21,39 @@ function importDatabase($database,$file)
 	//    echo "<br>Blank is here<br>";
 	//}
     }
+
+    fclose($fp);
 }
+
+function readData($file)
+{
+    $arr = array();
+    
+    while($data = fgets($file))
+    {
+	if($data == "" || $data == "\n")
+	    break;
+	
+	$row = explode(",",$data);
+
+	for($i=0; $i < count($row); $i++)
+	{
+	    if(strlen($row[$i]) > 2)
+		$row[$i] = "'" . substr(1,strlen($row[$i])-2) . "'";
+	    else
+		$row[$i] = "''";
+	}
+
+	$arr[] = $data;
+    }
+    
+    return $arr;
+}
+
+//$file = fopen("../ExportDatabase/databaseTables.csv","r");
+//fgets($file);
+//fgets($file);
+//var_export(readData($file));
 
 function updateDatabase($database,$tablename,$columns,$data)
 {
