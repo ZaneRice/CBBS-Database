@@ -20,11 +20,12 @@ function export($database)
 
 function import($database)
 {
-    importDatabase($database,"databaseTables.csv");
+    importDatabase($database,"originalDatabaseTables.csv");
 }
 
 $database = mysqli_connect("oss-ci.cs.clemson.edu",
     "cpsc472","myDB4dmin","cpsc472");
+
 clear($database);
 export($database);
 //import($database);
