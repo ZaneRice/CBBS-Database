@@ -81,36 +81,7 @@ function queryColumnsExcelString($database, $query)
 {
     $tableQuery = mysqli_query($database, $query);
     $queryColumns = mysqli_fetch_fields($tableQuery);
-
-    /*
-    $row = mysqli_fetch_array($tableQuery);
-
-    if($row == NULL)
-    {
-	return "";
-    }
-
-    $keys = array_keys($row);
-
-    //The columns of the table as an Excel readable string
-    $columns = "";
-
-    //Get the column names
-    for($i = 1; $i < count($row); $i=$i + 2)
-    {
-	$column = $keys[$i];
-
-	if ($columns === "")
-	{
-	    $columns = "$column"; 
-	}
-	else
-	{
-	    $columns = $columns . ",$column"; 
-	}
-    }
-     */
-
+    
     $columns = "";
 
     for($i = 0; $i < count($queryColumns); $i++)
