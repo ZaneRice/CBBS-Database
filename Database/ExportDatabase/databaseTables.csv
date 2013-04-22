@@ -1,4 +1,4 @@
-Table,Mentor
+Table,Mentor,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Email,FirstName,MiddleName,LastName,PreferredName,Gender,WorkPhone,WorkTelephoneExtention,MobilePhone,PermanentStreetAddress,PermanentCity,PermanentState,PermanentCountry,PermanentZipCode,IsMentor,IsMentee,IsAdmin,IsSponsor,Major,Minor,Concentrations,GraduationYear,ExtendedDegree,CurrentIndustry,OtherIndustryExpertise,YearsInCurrentPosition,YearsInCompany,CompanyName,Position,HobbiesAndInterests,MBTI,Activities,IsAvailableToBeMatched,Background,MatchedWith,Status
 rpkelly@clemson.edu,,,,,,,Richard,Patrick,Kelly,,Male,0,,NO,NO,NO,NO,,,,0,,,,0,0,,0,1,0,0,NO,,unmatched,
 steve@clemson.edu,Dennis,Elliott,Stevenson,,Male,8646565880,,8646565880,123 Evergreen Drive,Clemson,South Carolina, ,29631,NO,NO,NO,NO,,,,0,,,,30,32,College of Business and Behavioral Scien,Associate Professor,,,,NO,Art,,unmatched
@@ -12,21 +12,50 @@ Test14@clemson.edu,Donna,Martha,Smith,,Female,,,,,,,,,NO,NO,NO,NO,,,,0,,,,0,0,,,
 Test15@clemson.edu,Garret,,vanderbelt,Henry,Male,,,,,,,,,NO,NO,NO,NO,,,,0,,,,0,0,,,,,,NO,,,inactive
 Test16@clemson.edu,Test,,Record,Jack,Not Disclosed,,,,,,,,,NO,NO,NO,NO,,,,0,,,,0,0,,,,,,NO,,max power,matched
 Test17@g.clemson.edu,Thomas,Greene,Clemson,,Male,,,,,,,,,NO,NO,NO,NO,,,,0,,,,0,0,,,,,,NO,,,inactive
-
-Table,Mentee
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+TempMentor3@nothing.com,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Table,Mentee,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Email,University,GraduationYear,Major,ExtendedDegree,Minor,Concentration,FirstName,MiddleName,LastName,PreferredName,Gender,CUID,MobilePhone,CurrentStreetAddress,CurrentCity,CurrentState,CurrentCountry,CurrentZipCode,PermanentStreetAddress,PermanentCity,PermanentState,PermanentCountry,PermanentZipcode,IndustryOfInterest,HobbiesAndInterests,MBTI,Activities,IsMentor,IsMentee,IsAdmin,IsAvailableToBeMatched,Background,MatchedWith,Status,MatchDate
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 exampleMentee2@clemson.edu, , , ,,,,FirstExample,MiddleExample,LastExample,,Female,0,5555555555,Example Street Address,Example City,Example State, ,55555,,,,,,,,,,NO,YES,NO,YES,Example Background,,unmatched,0000-00-00
-exampleMentee@clemson.edu, , , ,,,,FirstExample,MiddleExample,LastExample,,Male,0,5555555555,Example Street Address,Example City,Example State, ,55555,,,,,,,,,,NO,YES,NO,YES,Example Background,,unmatched,0000-00-00
+exampleMentee@clemson.edu, , , ,,,,FirstExample,MiddleExample,LastExample,,Female,0,5555555555,Example Street Address,Example City,Example State, ,55555,,,,,,,,,,NO,YES,NO,YES,Example Background,,unmatched,0000-00-00
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 rpkelly@clemson.edu,,,,,,,Richard,Patrick,Kelly,,Male,0,,,,,,,,,,,,,,,,NO,YES,NO,NO,,,unmatched,0000-00-00
 TempMentee@nothing.com,,,,,,,,,,,Male,0,,,,,,,,,,,,,,,,NO,NO,NO,NO,,TempMentor@nothing.com,unmatched,0000-00-00
 Test10@clemson.edu,,,,,,,Fake,,Record,,Non Disclosed,748320185,,,,,,,,,,,,,,,,NO,YES,NO,NO,,,inactive,0000-00-00
 test1@clemson.edu,,,,,,,John,H.,Doe,,,0,,,,,,,,,,,,,,,,NO,YES,NO,NO,,Donna Smith,matched,2011-04-07
 Test2@clemson.edu,,,,,,,christopher,M.,last,chris,Male,465738012,,,,,,,,,,,,,,,,NO,YES,NO,YES,,,unmatched,0000-00-00
 Test3@clemson.edu,,,,,,,max,,power,johnny,Male,384274738,,,,,,,,,,,,,,,,NO,YES,NO,NO,,Test Record,matched,2013-11-11
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Test4@clemson.edu,,,,,,,Sally,Sally,Rogers,,,0,,,,,,,,,,,,,,,,NO,YES,NO,YES,,,unmatched,0000-00-00
 Test5@clemson.edu,,,,,,,James,,Morgan,chris,Non Disclosed,98765432,,,,,,,,,,,,,,,,NO,YES,NO,YES,,,unmatched,0000-00-00
 Test6@clemson.edu,,,,,,,Amy,,Livingston,,Female,987654321,,,,,,,,,,,,,,,,NO,YES,NO,YES,,,unmatched,0000-00-00
 Test7@g.clemson.edu,,,,,,,Captain,,Falcon,Captain,Male,111111111,,,,,,,,,,,,,,,,NO,YES,NO,NO,,Donna Smith,matched,2013-03-23
 Test8@clemson.edu,,,,,,,Tim,Timmy,Timmingsworth,,Non Disclosed,847329106,,,,,,,,,,,,,,,,NO,YES,NO,NO,,Harris Hopscotch,matched,2013-12-20
 Test9@clemson.edu,,,,,,,Leslie,,Roberts,Janet,Female,897342654,,,,,,,,,,,,,,,,NO,YES,NO,YES,,,inactive,0000-00-00
-
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+TempMentee2@nothing.com,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

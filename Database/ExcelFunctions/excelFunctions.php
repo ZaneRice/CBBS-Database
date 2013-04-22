@@ -80,6 +80,9 @@ function combineColumnsAndRows($columns,$rows)
 function queryColumnsExcelString($database, $query)
 {
     $tableQuery = mysqli_query($database, $query);
+    $queryColumns = mysqli_fetch_fields($tableQuery);
+
+    /*
     $row = mysqli_fetch_array($tableQuery);
 
     if($row == NULL)
@@ -96,6 +99,23 @@ function queryColumnsExcelString($database, $query)
     for($i = 1; $i < count($row); $i=$i + 2)
     {
 	$column = $keys[$i];
+
+	if ($columns === "")
+	{
+	    $columns = "$column"; 
+	}
+	else
+	{
+	    $columns = $columns . ",$column"; 
+	}
+    }
+     */
+
+    $columns = "";
+
+    for($i = 1; $i < count($queryColumns); $i++)
+    {
+	$column = $queryColumns[$i]->name;
 
 	if ($columns === "")
 	{
