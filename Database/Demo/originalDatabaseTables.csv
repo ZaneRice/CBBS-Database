@@ -1,6 +1,6 @@
 Table,Mentor,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Email,FirstName,MiddleName,LastName,PreferredName,Gender,WorkPhone,WorkTelephoneExtention,MobilePhone,PermanentStreetAddress,PermanentCity,PermanentState,PermanentCountry,PermanentZipCode,IsMentor,IsMentee,IsAdmin,IsSponsor,Major,Minor,Concentrations,GraduationYear,ExtendedDegree,CurrentIndustry,OtherIndustryExpertise,YearsInCurrentPosition,YearsInCompany,CompanyName,Position,HobbiesAndInterests,MBTI,Activities,IsAvailableToBeMatched,Background,MatchedWith,Status
-rpkelly@clemson.edu,,,,,,,Richard,Patrick,Kelly,,Male,0,,NO,NO,NO,NO,,,,0,,,,0,0,,0,1,0,0,NO,,unmatched,
+rpkelly@clemson.edu,Richard,Patrick,Kelly,,Male,0,,,,,,,,NO,NO,NO,NO,,,,0,,,,0,0,,0,1,0,0,NO,,,unmatched
 steve@clemson.edu,Dennis,Elliott,Stevenson,,Male,8646565880,,8646565880,123 Evergreen Drive,Clemson,South Carolina, ,29631,NO,NO,NO,NO,,,,0,,,,30,32,College of Business and Behavioral Scien,Associate Professor,,,,NO,Art,,unmatched
 TempMentor2@nothing.com,,,,,Female,,,,,,,,,NO,YES,NO,NO,,,,0,,,,0,0,,,,,,NO,,"TempMentee@nothing.com,TempMentee2@nothing.com,TempMentee3@nothing.com",unmatched
 TempMentor@nothing.com,,,,,Male,,,,,,,,,YES,YES,NO,NO,,,,0,,,,0,0,,,,,,NO,,"TempMentee@nothing.com,TempMentee2@nothing.com",unmatched

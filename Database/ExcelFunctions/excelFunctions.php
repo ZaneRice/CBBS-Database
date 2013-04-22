@@ -113,7 +113,7 @@ function queryColumnsExcelString($database, $query)
 
     $columns = "";
 
-    for($i = 1; $i < count($queryColumns); $i++)
+    for($i = 0; $i < count($queryColumns); $i++)
     {
 	$column = $queryColumns[$i]->name;
 
