@@ -61,7 +61,7 @@ function createExcelEntry($database, $query)
  */
 function combineLabelAndEntry($label,$entry)
 {
-    return "\"" . $label . "\"\n" . $entry;
+    return "Table," . $label . "\n" . $entry;
 }
 
 /*

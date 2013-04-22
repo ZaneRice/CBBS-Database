@@ -9,17 +9,16 @@ function importDatabase($database,$file)
 	exit;
     }
 
+    $tablename = readTableName($fp);
+
     while(!feof($fp))
     {
-	$tablename = readTableName($fp);
 	$columns = readColumns($fp);
-	$data = readData($fp);
-	updateDatabase($database, $tablename, $columns, $data);
-
-	// ignore "\n"
-	//if( fgets($fp,1000) == "<br>") {
-	//    echo "<br>Blank is here<br>";
-	//}
+	//$result will be an array with the data in index 0 and
+	//the name of the next table in index 1
+	$result = readData($fp);
+	updateDatabase($database, $tablename, $columns, $result[0]);
+	$tablename = $result[1];
     }
 
     fclose($fp);
@@ -27,18 +26,30 @@ function importDatabase($database,$file)
 
 function readTableName($file)
 {
+    $row = Array();
+
+    do{
     $row = explode(",",trim(fgets($file)));
-    return $row[0];
+    }while(!feof($file) && $row[0] != "Table");
+    
+    return $row[1];
 }
 
 function readColumns($file)
 {
-    return explode(",",trim(fgets($file)));
+    $columns = Array();
+
+    do{
+	$columns = explode(",",trim(fgets($file)));
+    }while(!feof($file) && $columns[0] == "");
+
+    return $columns;
 }
 
 function readData($file)
 {
     $arr = array();
+    $nextTable = "";
     
     while($data = fgets($file))
     {
@@ -46,10 +57,12 @@ function readData($file)
 	$data = trim($data);
 	$row = explode(',',$data);
 	
-	//Blank Primary Key Means STOP
-	//var_export($row);
-	if($row[0] == "")
+	//"Table" tag means stop
+	if($row[0] == "Table")
+	{
+	    $nextTable = $row[1];
 	    break;
+	}
 
 	$newRow = Array();
 
@@ -107,7 +120,7 @@ function readData($file)
 	$arr[] = $newRow;
     }
     
-    return $arr;
+    return Array($arr, $nextTable);
 }
 
 function updateDatabase($database,$tablename,$columns,$data)
@@ -142,8 +155,10 @@ function updateDatabase($database,$tablename,$columns,$data)
 	    else
 		$query = "";
 	}
-	
-	mysqli_query($database,$query);
+
+	//Only run the query if it actually was built
+	if(strlen($query) > 0)	
+	    mysqli_query($database,$query);
     }
 }
 
