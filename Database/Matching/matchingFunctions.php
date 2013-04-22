@@ -39,10 +39,11 @@ function removeMatch($database,$mentorEmail,$menteeEmail)
     $mentor = new Mentor;
     $mentee = new Mentee;
 
-    $menteeMatches = $mentee->getMatchedWith($database,$mentorEmail);
-    $mentorMatches = $mentor->getMatchedWith($database,$menteeEmail);
+    $menteeMatches = $mentee->getMatchedWith($database,$menteeEmail);
+    $mentorMatches = $mentor->getMatchedWith($database,$mentorEmail);
 
     $menteeMatches = explode(",",$menteeMatches);
+    //var_export($menteeMatches);
     for($i = 0; $i < count($menteeMatches); $i++)
     {
 	if($menteeMatches[$i] != $mentorEmail)

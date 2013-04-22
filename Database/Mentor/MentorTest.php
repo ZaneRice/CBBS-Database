@@ -34,12 +34,28 @@ function testRemoveMentor()
     $mentor = new Mentor;
     $mentee = new Mentee;
 
+    //Remove Mentee just in case it is already there
+    $query = $mentee->removeMentee($database,"TempMentee@nothing.com");
+
     //Insert Mentee
     $query = $mentee->addMentee($database,
 	Array("Email","MatchedWith"),
 	Array("TempMentee@nothing.com",
 	"AnotherMentor2@nothing.com,TempMentor@nothing.com,AnotherMentor@nothing.com"));
+    
+    //Remove Mentee just in case it is already there
+    $query = $mentee->removeMentee($database,"TempMentee2@nothing.com");
 
+    //Insert Mentee
+    $query = $mentee->addMentee($database,
+	Array("Email","MatchedWith"),
+	Array("TempMentee2@nothing.com",
+	"TempMentor@nothing.com,AnotherMentor@nothing.com"));
+
+    
+    //Remove Mentor in case it is already there
+    $mentor->removeMentor($database, "TempMentor@nothing.com");
+    
     //Insert Mentor
     $query = $mentor->addMentor($database,
 	Array("Email","MatchedWith"),
@@ -95,7 +111,7 @@ function testSetMatchedWith()
  * their own debugging right now. So don't alter it.
  */
 //testRemoveMentor(); 
-testAddMentor();
+//testAddMentor();
 //testGetMatchedWith();
 //testSetMatchedWith();
 testRemoveMentor(); 

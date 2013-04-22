@@ -1,0 +1,9 @@
+phpMyadmin: http://oss-ci.cs.clemson.edu/phpmyadmin
+u: cpsc472
+p: myDB4dmin
+
+ssh: cpsc472@oss-ci.cs.clemson.edu
+p: tigermints
+^ default home dir is webroot (/home/cpsc472/public_html/)
+
+$database = mysqli_connect("oss-ci.cs.clemson.edu","cpsc472","myDB4dmin","cpsc472");
