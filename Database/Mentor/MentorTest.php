@@ -37,7 +37,8 @@ function testRemoveMentor()
     //Insert Mentee
     $query = $mentee->addMentee($database,
 	Array("Email","MatchedWith"),
-	Array("TempMentee@nothing.com","TempMentor@nothing.com"));
+	Array("TempMentee@nothing.com",
+	"AnotherMentor2@nothing.com,TempMentor@nothing.com,AnotherMentor@nothing.com"));
 
     //Insert Mentor
     $query = $mentor->addMentor($database,
@@ -93,10 +94,10 @@ function testSetMatchedWith()
  * groups may have data in the tables that they are using for
  * their own debugging right now. So don't alter it.
  */
-testRemoveMentor(); 
+//testRemoveMentor(); 
 testAddMentor();
-testGetMatchedWith();
-testSetMatchedWith();
+//testGetMatchedWith();
+//testSetMatchedWith();
 testRemoveMentor(); 
-testAddMentor();
+//testAddMentor();
 ?>
