@@ -22,71 +22,6 @@
 	or to consult you before working on the task that
 	you have already been working on.
 ###############################################################
-(2.1)
-	The prototypes for these functions are in 
-	Matching/matchFunctions.php
-	
-	Function to add a match between mentor and mentee
-	addMatch($database,$mentorEmail,$menteeEmail)
-	{
-	    $mentor = new Mentor;
-	    $mentee = new Mentee;
-
-	    menteeMatches = mentee->getMatchedWith($database,$menteeEmail);
-	    mentorMatches = mentor->getMatchedWith($database,$mentorEmail);
-
-	    /* 
-	    	Here is where you modify the strings
-	        returned to have the appropriate
-	        emails.
-		
-		Mentor should get Mentee's email 
-		Mentee should get Mentor's email.
-
-		If there is already a match in the
-		table, then make sure to put a comma
-		between the existing match and the 
-		new one.
-
-		DO NOT DELETE THE OLD MATCHES
-		 (that is what the removeMatch() function does)
-	    */
-
-	    //Once the strings are modified then just update the
-	    //database with the new strings
-	    mentee->setMatchedWith($database,$menteeEmail,modifiedMenteeMatches);
-	    mentor->setMatchedWith($database,$mentorEmail,modifiedMentorMatches);
-	}
-	
-	Function to remove a match between mentor and mentee
-	removeMatch($database,$mentorEmail,$menteeEmail)
-	{
-	    $mentor = new Mentor;
-	    $mentee = new Mentee;
-
-	    menteeMatches = mentee->getMatchedWith($database,$menteeEmail);
-	    mentorMatches = mentor->getMatchedWith($database,$mentorEmail);
-
-	    /* 
-	    	Here is where you modify menteeMatches and
-		mentorMatches
-
-		Remove Mentor's email from Mentee's MatchedWith
-		Remove Mentee's email from Mentor's MatchedWith
-
-		Make sure to remove any comma that may be left
-		behind when you remove the email
-			i.e.
-			If the original MatchedWith is: email1, email2
-			and you remove email2 then the resulting
-			MatchedWith should be "email1" NOT "email1,".
-	    */
-
-	    //Once the strings are modified then just update the
-	    //database with the new strings
-	    mentee->setMatchedWith($database,$menteeEmail,$modifiedMenteeMatches);
-	    mentor->setMatchedwith($database,$mentorEmail,$modifiedMentorMatches);
-	}
 ---------------STUFF THAT'S DONE---------------------------
 (DONE) Have convert.py output a file named TableNames
     which contains the name of a table with a corresponding
@@ -416,4 +351,69 @@
 
 (DONE)
 	Fix "YES", "NO" to "TRUE","FALSE" bug in importDatabase()
+
+(DONE)
+	The prototypes for these functions are in 
+	Matching/matchFunctions.php
 	
+	Function to add a match between mentor and mentee
+	addMatch($database,$mentorEmail,$menteeEmail)
+	{
+	    $mentor = new Mentor;
+	    $mentee = new Mentee;
+
+	    menteeMatches = mentee->getMatchedWith($database,$menteeEmail);
+	    mentorMatches = mentor->getMatchedWith($database,$mentorEmail);
+
+	    /* 
+	    	Here is where you modify the strings
+	        returned to have the appropriate
+	        emails.
+		
+		Mentor should get Mentee's email 
+		Mentee should get Mentor's email.
+
+		If there is already a match in the
+		table, then make sure to put a comma
+		between the existing match and the 
+		new one.
+
+		DO NOT DELETE THE OLD MATCHES
+		 (that is what the removeMatch() function does)
+	    */
+
+	    //Once the strings are modified then just update the
+	    //database with the new strings
+	    mentee->setMatchedWith($database,$menteeEmail,modifiedMenteeMatches);
+	    mentor->setMatchedWith($database,$mentorEmail,modifiedMentorMatches);
+	}
+	
+	Function to remove a match between mentor and mentee
+	removeMatch($database,$mentorEmail,$menteeEmail)
+	{
+	    $mentor = new Mentor;
+	    $mentee = new Mentee;
+
+	    menteeMatches = mentee->getMatchedWith($database,$menteeEmail);
+	    mentorMatches = mentor->getMatchedWith($database,$mentorEmail);
+
+	    /* 
+	    	Here is where you modify menteeMatches and
+		mentorMatches
+
+		Remove Mentor's email from Mentee's MatchedWith
+		Remove Mentee's email from Mentor's MatchedWith
+
+		Make sure to remove any comma that may be left
+		behind when you remove the email
+			i.e.
+			If the original MatchedWith is: email1, email2
+			and you remove email2 then the resulting
+			MatchedWith should be "email1" NOT "email1,".
+	    */
+
+	    //Once the strings are modified then just update the
+	    //database with the new strings
+	    mentee->setMatchedWith($database,$menteeEmail,$modifiedMenteeMatches);
+	    mentor->setMatchedwith($database,$mentorEmail,$modifiedMentorMatches);
+	}
