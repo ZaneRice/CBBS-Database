@@ -25,6 +25,27 @@ class Mentee
     {
 	$query = generateInsertQuery("Mentee",$columns,$values);
 	mysqli_query($database,$query);
+	
+	//Add all matches to this Mentor to the Mentee table
+	$mentee = new Mentee;
+	$menteeEmail = $values[array_search("Email",$columns)];
+	$matches = $mentee->getMatchedWith($database,$menteeEmail);
+
+	$matchesArray = explode(",",$matches);
+
+	for($i = 0; $i < count($matchesArray); $i++)
+	{
+	    //Add this match. addMatch does not allow duplicate matching
+	    //so just calling this does the right thing.
+	    //Don't try to add a match to an empty string email, because
+	    //you might end up with something like the following:
+	    //	Mentor
+	    //	Email	MatchedWith
+	    //	email   email2,
+	    //	Which is wrong because the comma is there for no reason.
+	    if(strlen($matchesArray[$i]) > 0)
+		addMatch($database,$matchesArray[$i],$menteeEmail);
+	}
     }
     
     function removeMentee($database,$menteeEmail)	

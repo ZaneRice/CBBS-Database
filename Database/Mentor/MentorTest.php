@@ -40,26 +40,29 @@ function testRemoveMentor()
     $mentor->removeMentor($database, "TempMentor@nothing.com");
 
 
+    //Insert Mentor
+    $query = $mentor->addMentor($database,
+	Array("Email","MatchedWith"),
+	Array("TempMentor@nothing.com",""));
+
     //Insert Mentee
     $query = $mentee->addMentee($database,
 	Array("Email","MatchedWith"),
 	Array("TempMentee@nothing.com",
-	"AnotherMentor2@nothing.com,AnotherMentor@nothing.com"));
+	"AnotherMentor2@nothing.com,TempMentor@nothing.com,AnotherMentor@nothing.com"));
     
     //Insert Mentee
     $query = $mentee->addMentee($database,
 	Array("Email","MatchedWith"),
 	Array("TempMentee2@nothing.com",
-	"AnotherMentor@nothing.com"));
+	"AnotherMentor@nothing.com,TempMentor@nothing.com"));
     
-    //Insert Mentor
-    $query = $mentor->addMentor($database,
-	Array("Email","MatchedWith"),
-	Array("TempMentor@nothing.com","TempMentee@nothing.com,TempMentee2@nothing.com"));
+    $query = $mentee->removeMentee($database,"TempMentee@nothing.com");
+    $query = $mentee->removeMentee($database,"TempMentee2@nothing.com");
 
     //Call Mentor->removeMentor()
-    $mentor = new Mentor;
-    $mentor->removeMentor($database, "TempMentor@nothing.com");
+    //$mentor = new Mentor;
+    //$mentor->removeMentor($database, "TempMentor@nothing.com");
 
     mysqli_close($database);
 }
