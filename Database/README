@@ -118,3 +118,5 @@ Conventions:
 	(2) Please do not commit or push code which has the login information
 	    for the database. Remember, this is not a private repository,
 	    anyone can pull this code.
+	    	-- As it turns out this gets violated so many times it 
+		   doesn't actually matter
