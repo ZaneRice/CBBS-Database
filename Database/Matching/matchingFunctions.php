@@ -4,31 +4,43 @@ function addMatch($database,$mentorEmail,$menteeEmail)
     $tor = new Mentor;
     $match = $tor->getMatchedWith($database,$mentorEmail);
 
-    if ( $match == "") 
-	$match = $menteeEmail;
-    else
-	$match = $match . "," . $menteeEmail;
+    $matchArray = explode(",",$match);
+
+    //Disallow duplicate matches
+    if(!in_array($menteeEmail,$matchArray)
+    {
+	if ( $match == "") 
+	    $match = $menteeEmail;
+	else
+	    $match = $match . "," . $menteeEmail;
     
-    //Update Mentor table (well, just the row containing $mentorEmail)
-    $query = generateUpdateQuery("Mentor",
-	array("Email","MatchedWith","Status"),
-	array($mentorEmail,$match,"matched"));
-    mysqli_query($database,$query);
+	//Update Mentor table (well, just the row containing $mentorEmail)
+	$query = generateUpdateQuery("Mentor",
+	    array("Email","MatchedWith","Status"),
+	    array($mentorEmail,$match,"matched"));
+	mysqli_query($database,$query);
+    }
 
     $tee = new Mentee;
     $match = $tee->getMatchedWith($database,$mentorEmail);
     $today = date("Y-m-d");
 
-    if ( $match == "" ) 
-	$match = $mentorEmail;
-    else
-	$match = $match . "," . $mentorEmail;
+    $matchArray = explode(",",$match);
 
-    //Update Mentee table (well, just the row containing $menteeEmail)
-    $query = generateUpdateQuery("Mentee",
-	array("Email","MatchDate","Status","MatchedWith"),
-	array($menteeEmail,$today,"matched",$match));
-    mysqli_query($database,$query);		
+    //Disallow duplicate matches
+    if(!in_array($mentorEmail,$matchArray))
+    {
+	if ( $match == "" ) 
+	    $match = $mentorEmail;
+	else
+	    $match = $match . "," . $mentorEmail;
+
+	//Update Mentee table (well, just the row containing $menteeEmail)
+	$query = generateUpdateQuery("Mentee",
+	    array("Email","MatchDate","Status","MatchedWith"),
+	    array($menteeEmail,$today,"matched",$match));
+	mysqli_query($database,$query);		
+    }
 } 
 
 function removeMatch($database,$mentorEmail,$menteeEmail)

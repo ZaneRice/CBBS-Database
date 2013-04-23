@@ -48,6 +48,8 @@ function testAddMatch($database)
 
 
     addMatch($database,"TempMentor@nothing.com","TempMentee@nothing.com");
+    addMatch($database,"TempMentor@nothing.com","TempMentee@nothing.com");
+    addMatch($database,"TempMentor@nothing.com","TempMentee@nothing.com");
     addMatch($database,"TempMentor@nothing.com","TempMentee2@nothing.com");
 }
 
