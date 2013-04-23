@@ -7,7 +7,7 @@ function addMatch($database,$mentorEmail,$menteeEmail)
     $matchArray = explode(",",$match);
 
     //Disallow duplicate matches
-    if(!in_array($menteeEmail,$matchArray)
+    if(!in_array($menteeEmail,$matchArray))
     {
 	if ( $match == "") 
 	    $match = $menteeEmail;
@@ -22,7 +22,7 @@ function addMatch($database,$mentorEmail,$menteeEmail)
     }
 
     $tee = new Mentee;
-    $match = $tee->getMatchedWith($database,$mentorEmail);
+    $match = $tee->getMatchedWith($database,$menteeEmail);
     $today = date("Y-m-d");
 
     $matchArray = explode(",",$match);

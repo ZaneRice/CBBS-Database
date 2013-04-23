@@ -33,33 +33,29 @@ function testRemoveMentor()
 
     $mentor = new Mentor;
     $mentee = new Mentee;
-
-    //Remove Mentee just in case it is already there
+    
+    //Remove things just in case they already there
     $query = $mentee->removeMentee($database,"TempMentee@nothing.com");
+    $query = $mentee->removeMentee($database,"TempMentee2@nothing.com");
+    $mentor->removeMentor($database, "TempMentor@nothing.com");
+
 
     //Insert Mentee
     $query = $mentee->addMentee($database,
 	Array("Email","MatchedWith"),
 	Array("TempMentee@nothing.com",
-	"AnotherMentor2@nothing.com,TempMentor@nothing.com,AnotherMentor@nothing.com"));
+	"AnotherMentor2@nothing.com,AnotherMentor@nothing.com"));
     
-    //Remove Mentee just in case it is already there
-    $query = $mentee->removeMentee($database,"TempMentee2@nothing.com");
-
     //Insert Mentee
     $query = $mentee->addMentee($database,
 	Array("Email","MatchedWith"),
 	Array("TempMentee2@nothing.com",
-	"TempMentor@nothing.com,AnotherMentor@nothing.com"));
-
-    
-    //Remove Mentor in case it is already there
-    $mentor->removeMentor($database, "TempMentor@nothing.com");
+	"AnotherMentor@nothing.com"));
     
     //Insert Mentor
     $query = $mentor->addMentor($database,
 	Array("Email","MatchedWith"),
-	Array("TempMentor@nothing.com","TempMentee@nothing.com"));
+	Array("TempMentor@nothing.com","TempMentee@nothing.com,TempMentee2@nothing.com"));
 
     //Call Mentor->removeMentor()
     $mentor = new Mentor;
