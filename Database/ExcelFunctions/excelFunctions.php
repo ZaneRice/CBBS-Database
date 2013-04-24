@@ -17,8 +17,8 @@ function toExcel($database,$query,$label)
 }
 
 /*
- * This function will write all of the data in the tables listed in the
- * $tableNames array to a file named $filename using the database
+ * This function will return all of the data in the tables listed in the
+ * $tableNames array as a string using the database
  * connected to by $database 
  *
  * Mostly this function exists for convenience when all data from 
@@ -26,7 +26,7 @@ function toExcel($database,$query,$label)
  *
  * For other puposes use toExcel()
  */
-function exportTablesToExcel($database, $tableNames,$filename)
+function exportTablesToExcel($database, $tableNames)//,$filename)
 {
     $toWrite = "";
 
@@ -38,9 +38,13 @@ function exportTablesToExcel($database, $tableNames,$filename)
     }
     
     /* Write the output to an Excel readable file */
-    $outputFile = fopen($filename,"w+");
+    /*
+	$outputFile = fopen($filename,"w+");
     fwrite($outputFile,$toWrite);
     fclose($outputFile);
+     */
+
+    return $toWrite;
 }
 
 /*

@@ -1,6 +1,7 @@
 <?php
-function importDatabase($database,$file)
+function importDatabase($database,$fp)
 {
+    /*
     $fp = fopen("$file",'r');
 
     if(!$fp)
@@ -8,6 +9,7 @@ function importDatabase($database,$file)
 	echo "Could not open file!";
 	exit;
     }
+     */
 
     $tablename = readTableName($fp);
 
@@ -21,7 +23,9 @@ function importDatabase($database,$file)
 	$tablename = $result[1];
     }
 
+    /*
     fclose($fp);
+     */
 }
 
 function readTableName($file)
